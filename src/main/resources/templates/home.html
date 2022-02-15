@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tridomino</title>
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <h1>Tridomino Scoring</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <form th:action="@{/addPlayer}">
+                <h3>Füge hier neue Spieler hinzu:</h3>
+                <div class="form-group">
+                    <label for="playerName">Namen eingeben:</label>
+                    <input id ="playerName" type="text" name="playerName" placeholder="" th:value="*{playerName}">
+                </div>
+                <input class="button" type="submit" name="submit" value="Spieler hinzufügen">
+            </form>
+        </section>
+    </div>
+
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>Name</th>
+            </tr>
+            <tr th:each="playerName : ${playerNames}">
+                <td th:text="${playerName.getName}"></td>
+            </tr>
+        </table>
+    </div>
+    
+    
+    <footer id="main-footer">
+        <p>Copyright &copy; 2022 Leon Korth</p>
+    </footer>
+</body>
+</html>
