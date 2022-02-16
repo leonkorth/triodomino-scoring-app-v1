@@ -3,7 +3,7 @@ package leonkorth.tridominoscoringapp.model;
 public class PlayerMove {
 
     private int points;
-    private Player player;
+    private String name;
 
     public int getPoints() {
         return points;
@@ -13,11 +13,16 @@ public class PlayerMove {
         this.points = points;
     }
 
-    public Player getPlayer() {
-        return player;
+    public String getName() {
+        return name;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name + points;
     }
 }

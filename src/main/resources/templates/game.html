@@ -28,13 +28,15 @@
                     <div class="container">
                         <form action="#" th:action="@{/game}" th:object="${playerMove}" method="post">
                             <div class="form-group">
+                                <p>Name: <input type="text" th:field="*{name}" th:placeholder="${playerName.getName}"/></p>
+                            </div>
+                            <div class="form-group">
                                 <p>Punkte: <input type="number" th:field="*{points}"/></p>
                             </div>
                             <input class="button" type="submit" value="hinzufügen">
                         </form>
                     </div>
                 </th>
-
             </tr>
         </tbody>
     </table>

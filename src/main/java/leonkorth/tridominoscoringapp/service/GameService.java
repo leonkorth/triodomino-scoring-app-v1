@@ -26,9 +26,36 @@ public class GameService {
         return allPlayers;
     }
 
-    public void addPoints(){};
+    public List<Player> addPoints(String input){
 
+        String[] part = input.split("(?<=\\D)(?=\\d)");
 
+        String name = part[0];
+        int points = Integer.parseInt(part[1]);
 
+        Player player = getAllPlayers().stream().filter(p -> p.getName().equals(name)).findAny().orElse(null);
 
+        int actualPoints = allPlayersTotalPoints.get(player);
+
+        allPlayersTotalPoints.put(player,actualPoints + points);
+
+        List<Integer> newList = new ArrayList<>(List.copyOf(allPlayersAllPoints.get(player)));
+        newList.add(points);
+
+        allPlayersAllPoints.put(player,newList);
+
+        return getAllPlayers();
+    };
+
+    public List<Player> getAllPlayers() {
+        return allPlayers;
+    }
+
+    public Map<Player, List<Integer>> getAllPlayersAllPoints() {
+        return allPlayersAllPoints;
+    }
+
+    public Map<Player, Integer> getAllPlayersTotalPoints() {
+        return allPlayersTotalPoints;
+    }
 }
