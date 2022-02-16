@@ -26,10 +26,9 @@
             <tr>
                 <th th:each="playerName: ${playerNames}">
                     <div class="container">
-                        <form action="">
+                        <form action="#" th:action="@{/game}" th:object="${playerMove}" method="post">
                             <div class="form-group">
-                                <label for="pointsForPlayer">Punkte</label>
-                                <input id="pointsForPlayer"  type="number" th:name="'pointsFor'+ ${playerName.getName}">
+                                <p>Punkte: <input type="number" th:field="*{points}"/></p>
                             </div>
                             <input class="button" type="submit" value="hinzufügen">
                         </form>

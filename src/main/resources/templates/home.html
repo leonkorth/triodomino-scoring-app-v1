@@ -16,7 +16,7 @@
 
     <div class="container">
         <section>
-            <form th:action="@{/addPlayer}">
+            <form th:action="@{/addPlayer}" method="post">
                 <h3>Füge hier neue Spieler hinzu:</h3>
                 <div class="form-group">
                     <label for="playerName">Namen eingeben:</label>
@@ -43,8 +43,8 @@
 
     <div class="container">
         <section>
-            <form th:action="@{/startGame}">
-                <input class="button" type="submit" name="starten" value="Spiel starten">
+            <form th:action="@{/game}" method="get">
+                <input class="button" type="submit" value="Spiel starten">
             </form>
         </section>
     </div>
