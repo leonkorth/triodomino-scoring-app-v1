@@ -1,0 +1,112 @@
+body{
+	background-color: green;
+	color: #555;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 16px;
+	line-height: 1.6em;
+	margin: 0;
+}
+
+.button{
+	background-color: #333;
+	color: #fff;
+	padding: 10px 15px;
+	border: none;
+}
+
+.button:hover{
+	background: grey;
+	color: #fff;
+}
+
+.container{
+	width: 70%;
+	margin: auto;
+	overflow: hidden;
+}
+
+.box-1{
+
+	border: 5px black dotted;
+
+}
+
+.contact-form{
+	padding: 20px;
+}
+
+.contact-form .form-group{
+	padding-bottom: 15px;
+}
+
+.contact-form label{
+	display: block;
+}
+
+.contact-form input[type="text"]{
+	padding: 8px;
+	width: 20%;
+}
+
+.contact-form textarea{
+	padding: 5px;
+	width: 100%;
+}
+
+.contact-form input[type="email"]{
+	padding: 8px;
+	width: 50%;
+}
+
+#main-header{
+	background-color: skyblue;
+	color: #fff;
+}
+
+#navbar{
+	background-color: grey;
+	color: #fff;
+}
+
+#navbar ul{
+	padding: 0;
+	list-style: none;
+}
+
+#navbar li{
+	display: inline;
+}
+
+#navbar a{
+	color: #fff;
+	text-decoration: none;
+	font-size: 18px;
+	padding-right: 15px;
+}
+
+#main{
+	float: left;
+	width: 70%;
+	padding: 0 30px;
+	box-sizing: border-box;
+}
+
+#sidebar{
+	float: right;
+	width: 30%;
+	background-color: #333;
+	color: #fff;
+	padding: 10px;
+	margin-top: 10px;
+	box-sizing: border-box;
+}
+
+
+#main-footer{
+	background-color: grey;
+	color: #fff;
+	text-align: center;
+	padding: 20px;
+	margin-top: 40px;
+
+}

@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Tridomino</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+
 </head>
 <body>
     <header id="main-header">
@@ -18,12 +20,14 @@
                 <h3>Füge hier neue Spieler hinzu:</h3>
                 <div class="form-group">
                     <label for="playerName">Namen eingeben:</label>
-                    <input id ="playerName" type="text" name="playerName" placeholder="" th:value="*{playerName}">
+                    <input id ="playerName" type="text" name="playerName" placeholder="" >
                 </div>
                 <input class="button" type="submit" name="submit" value="Spieler hinzufügen">
             </form>
         </section>
     </div>
+
+
 
     <div class="container">
         <table class="table">
@@ -34,6 +38,15 @@
                 <td th:text="${playerName.getName}"></td>
             </tr>
         </table>
+    </div>
+
+
+    <div class="container">
+        <section>
+            <form th:action="@{/startGame}">
+                <input class="button" type="submit" name="starten" value="Spiel starten">
+            </form>
+        </section>
     </div>
     
     

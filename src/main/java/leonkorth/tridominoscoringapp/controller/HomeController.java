@@ -20,6 +20,14 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("/startGame")
+    public String startGame(Model model){
+
+        model.addAttribute("playerNames",playerService.getAllPlayers());
+
+        return "game";
+    }
+
 
     @GetMapping("/addPlayer")
     public String names(@RequestParam("playerName") String playerName, Model model){

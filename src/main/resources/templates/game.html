@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tridomino</title>
+</head>
+<body>
+<header id="main-header">
+    <div class="container">
+        <h1>Tridomino Game</h1>
+    </div>
+</header>
+
+
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>Name</th>
+        </tr>
+        <tr th:each="playerName : ${playerNames}">
+            <td th:text="${playerName.getName}"></td>
+        </tr>
+    </table>
+</div>
+
+
+
+<footer id="main-footer">
+    <p>Copyright &copy; 2022 Leon Korth</p>
+</footer>
+</body>
+</html>

@@ -15,7 +15,8 @@ public class PlayerService {
     private List<Player> allPlayers = new ArrayList<>();
 
     public List<Player> addPlayer(Player player){
-        allPlayers.add(player);
+        boolean playerIsNew = allPlayers.stream().map(Player::getName).noneMatch(p -> p.equals(player.getName()));
+        if(!player.getName().isEmpty() && playerIsNew) allPlayers.add(player);
 
         return getAllPlayers();
     }
