@@ -15,12 +15,11 @@
 
 <div class="container">
     <table class="table">
-        <tr>
-            <th>Name</th>
-        </tr>
-        <tr th:each="playerName : ${playerNames}">
-            <td th:text="${playerName.getName}"></td>
-        </tr>
+        <thead>
+            <tr class="headings">
+                <th th:each="playerName: ${playerNames}" class="column-title" th:text="${playerName.getName}"></th>
+            </tr>
+        </thead>
     </table>
 </div>
 
