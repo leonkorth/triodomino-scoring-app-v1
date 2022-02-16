@@ -1,6 +1,6 @@
 body{
-	background-color: green;
-	color: #555;
+	background-color: lightgrey;
+	color: #333333;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 16px;
 	line-height: 1.6em;
@@ -103,6 +103,9 @@ body{
 
 
 #main-footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 	background-color: grey;
 	color: #fff;
 	text-align: center;

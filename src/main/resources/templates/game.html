@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Tridomino</title>
+    <link th:href = "@{/css/style.css}" rel="stylesheet">
+
 </head>
 <body>
 <header id="main-header">
@@ -20,6 +22,22 @@
                 <th th:each="playerName: ${playerNames}" class="column-title" th:text="${playerName.getName}"></th>
             </tr>
         </thead>
+        <tbody>
+            <tr>
+                <th th:each="playerName: ${playerNames}">
+                    <div class="container">
+                        <form action="">
+                            <div class="form-group">
+                                <label for="pointsForPlayer">Punkte</label>
+                                <input id="pointsForPlayer"  type="number" th:name="'pointsFor'+ ${playerName.getName}">
+                            </div>
+                            <input class="button" type="submit" value="hinzufügen">
+                        </form>
+                    </div>
+                </th>
+
+            </tr>
+        </tbody>
     </table>
 </div>
 
