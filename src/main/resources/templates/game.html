@@ -38,6 +38,20 @@
                     </div>
                 </th>
             </tr>
+            <tr class="headings">
+                <th th:each="playerAndPoints: ${playerNamesAndTotalPoints}" class="column-title" th:text="'Gesamtpunkte für ' + ${playerAndPoints.key.getName()} +': ' + ${playerAndPoints.value}"></th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+
+        </thead>
+        <tbody>
+
         </tbody>
     </table>
 </div>
