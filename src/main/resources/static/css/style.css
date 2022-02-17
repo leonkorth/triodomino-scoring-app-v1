@@ -25,6 +25,20 @@ body{
 	overflow: hidden;
 }
 
+.dyn-table{
+	width: 30%;
+	float:left;
+}
+
+.dyn-table th{
+	text-align: left;
+}
+
+.dyn-table td{
+	text-align: left;
+}
+
+
 .box-1{
 
 	border: 5px black dotted;

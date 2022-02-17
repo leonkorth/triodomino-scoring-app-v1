@@ -46,20 +46,16 @@
 </div>
 
 <div class="container">
-    <table class="table">
+    <table class="dyn-table table" th:each="playerAndAllPoints: ${playerNamesAndAllPoints}">
         <thead class="headings">
                 <tr>
-                    <th th:each="playerAndAllPoints: ${playerNamesAndAllPoints}" class="column-title" th:text="'Punktehistorie (' + ${playerAndAllPoints.key.getName()} + ')'"></th>
+                    <th class="column-title" th:text="'Punktehistorie (' + ${playerAndAllPoints.key.getName()} + ')'"></th>
                 </tr>
         </thead>
         <tbody>
-            <span th:each="playerAndAllPoints: ${playerNamesAndAllPoints}">
-                <tr>
-                    <td th:each="playerPoint: ${playerAndAllPoints.value}">
-                        <p  th:text="${playerPoint}"></p>
-                    </td>
-                <tr>
-            </span>
+              <tr th:each="playerPoints: ${playerAndAllPoints.value}">
+                  <td th:text="${playerPoints}"></td>
+              </tr>
         </tbody>
     </table>
 </div>
