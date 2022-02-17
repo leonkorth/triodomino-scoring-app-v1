@@ -26,12 +26,11 @@ body{
 }
 
 .dyn-table{
-	width: 30%;
 	float:left;
 }
 
 .dyn-table th{
-	text-align: left;
+	text-align: center;
 }
 
 .dyn-table td{
