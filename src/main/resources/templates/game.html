@@ -39,7 +39,7 @@
                 </th>
             </tr>
             <tr class="headings">
-                <th th:each="playerAndPoints: ${playerNamesAndTotalPoints}" class="column-title" th:text="'Gesamtpunkte für ' + ${playerAndPoints.key.getName()} +': ' + ${playerAndPoints.value}"></th>
+                <th th:each="playerAndPoints: ${playerNamesAndTotalPoints}" class="column-title" th:text="'Gesamtpunkte (' + ${playerAndPoints.key.getName()} +'): ' + ${playerAndPoints.value}"></th>
             </tr>
         </tbody>
     </table>
@@ -47,11 +47,19 @@
 
 <div class="container">
     <table class="table">
-        <thead>
-
+        <thead class="headings">
+                <tr>
+                    <th th:each="playerAndAllPoints: ${playerNamesAndAllPoints}" class="column-title" th:text="'Punktehistorie (' + ${playerAndAllPoints.key.getName()} + ')'"></th>
+                </tr>
         </thead>
         <tbody>
-
+            <span th:each="playerAndAllPoints: ${playerNamesAndAllPoints}">
+                <tr>
+                    <td th:each="playerPoint: ${playerAndAllPoints.value}">
+                        <p  th:text="${playerPoint}"></p>
+                    </td>
+                <tr>
+            </span>
         </tbody>
     </table>
 </div>

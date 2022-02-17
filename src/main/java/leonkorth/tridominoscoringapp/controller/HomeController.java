@@ -50,6 +50,7 @@ public class HomeController {
         gameService.addPoints(playerMove.toString());
 
         model.addAttribute("playerNamesAndTotalPoints", gameService.getAllPlayersTotalPoints());
+        model.addAttribute("playerNamesAndAllPoints", gameService.getAllPlayersAllPoints());
         model.addAttribute("playerNames",playerService.getAllPlayers());
         model.addAttribute("playerMove",new PlayerMove());
 
