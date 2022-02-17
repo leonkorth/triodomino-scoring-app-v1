@@ -12,9 +12,9 @@ public class GameService {
 
     private List<Player> allPlayers = new ArrayList<>();
 
-    private Map<Player, List<Integer>> allPlayersAllPoints = new HashMap<>();
+    private Map<Player, List<Integer>> allPlayersAllPoints = new LinkedHashMap<>();
 
-    private Map<Player, Integer> allPlayersTotalPoints = new HashMap<>();
+    private Map<Player, Integer> allPlayersTotalPoints = new LinkedHashMap<>();
 
     public List<Player> startGame(List<Player> players){
         allPlayers = List.copyOf(players);
