@@ -60,4 +60,73 @@ public class GameServiceTest {
 
 
     }
+
+
+    @Test
+    @DisplayName("returns the correct winner")
+    void returnWinner(){
+        GameService gameService = new GameService();
+        Player p1 = new Player("Leon");
+        Player p2 = new Player("Peonie");
+
+        String inputL1 = "Leon100";
+        String inputL2 = "Leon200";
+
+        String inputP1="Peonie111";
+        String inputP2="Peonie111";
+
+
+        gameService.startGame(List.of(p1,p2));
+
+        gameService.addPoints(inputL1).addPoints(inputP1).addPoints(inputL2).addPoints(inputP2);
+
+        String expectedName = "Leon";
+        int expectedPoints = 100;
+        int expectedLengths = 1;
+
+
+
+        String actualName = gameService.getWinnerAndPoints().keySet().stream().findFirst().orElse(new Player(" ")).getName();
+        int actualPoints = gameService.getWinnerAndPoints().values().stream().findFirst().orElse(0);
+        int actualLength = gameService.getWinnerAndPoints().size();
+
+        assertEquals(expectedName,actualName);
+        assertEquals(expectedPoints,actualPoints);
+        assertEquals(expectedLengths,actualLength);
+
+    }
+
+    @Test
+    @DisplayName("returns the correct loser")
+    void returnLoser(){
+        GameService gameService = new GameService();
+        Player p1 = new Player("Leon");
+        Player p2 = new Player("Peonie");
+
+        String inputL1 = "Leon100";
+        String inputL2 = "Leon200";
+
+        String inputP1="Peonie111";
+        String inputP2="Peonie111";
+
+
+        gameService.startGame(List.of(p1,p2));
+
+        gameService.addPoints(inputL1).addPoints(inputP1).addPoints(inputL2).addPoints(inputP2);
+
+        String expectedName = "Peonie";
+        int expectedPoints = 222;
+        int expectedLengths = 1;
+
+
+
+        String actualName = gameService.getLoserAndPoints().keySet().stream().findFirst().orElse(new Player(" ")).getName();
+        int actualPoints = gameService.getLoserAndPoints().values().stream().findFirst().orElse(0);
+        int actualLength = gameService.getLoserAndPoints().size();
+
+        assertEquals(expectedName,actualName);
+        assertEquals(expectedPoints,actualPoints);
+        assertEquals(expectedLengths,actualLength);
+
+    }
 }

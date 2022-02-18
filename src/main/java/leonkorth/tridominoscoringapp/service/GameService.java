@@ -58,4 +58,17 @@ public class GameService {
     public Map<Player, Integer> getAllPlayersTotalPoints() {
         return allPlayersTotalPoints;
     }
+
+    public Map<Player, Integer> getLoserAndPoints(){
+
+
+        return Map.of();
+    }
+
+    public Map<Player, Integer> getWinnerAndPoints(){
+
+        return Map.of();
+    }
+
+
 }
