@@ -26,7 +26,7 @@ public class GameService {
         return allPlayers;
     }
 
-    public List<Player> addPoints(String input){
+    public GameService addPoints(String input){
 
         String[] part = input.split("(?<=\\D)(?=\\d)");
 
@@ -44,7 +44,7 @@ public class GameService {
 
         allPlayersAllPoints.put(player,newList);
 
-        return getAllPlayers();
+        return this;
     };
 
     public List<Player> getAllPlayers() {
