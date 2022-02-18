@@ -16,6 +16,7 @@
 
 
 <div class="container">
+    <h3>Die Gesamtpunkte aller Spieler:</h3>
     <table>
         <thead>
             <tr>
@@ -31,7 +32,14 @@
 </div>
 
 
+<div class="container">
+    <h3 th:each="theWinner: ${winner}" th:text="'Der Gewinner mit insgesamt ' + ${theWinner.value} + ' Punkten ist ' + ${theWinner.key.getName()} + '. Herzlichen Glückwünsch!'"></h3>
+</div>
 
+
+<div class="container">
+    <h3 th:each="theLoser: ${loser}" th:text="'Der Verlier mit insgesamt ' + ${theLoser.value} + ' Punkten ist ' + ${theLoser.key.getName()} + '. Kopf hoch!'"></h3>
+</div>
 
 
 
