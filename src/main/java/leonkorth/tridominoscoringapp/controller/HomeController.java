@@ -44,6 +44,18 @@ public class HomeController {
     }
 
 
+    @GetMapping("/final")
+    public String endGame(Model model){
+
+
+        model.addAttribute("playerNames",playerService.getAllPlayers());
+        model.addAttribute("playerNamesAndTotalPoints", gameService.getAllPlayersTotalPoints());
+
+
+        return "final";
+    }
+
+
     @PostMapping("/game")
     public String getPlayerPoints(@ModelAttribute("playerMove") PlayerMove playerMove, Model model){
 
