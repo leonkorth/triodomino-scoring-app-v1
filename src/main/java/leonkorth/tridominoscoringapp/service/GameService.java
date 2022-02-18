@@ -59,13 +59,24 @@ public class GameService {
         return allPlayersTotalPoints;
     }
 
-    public Map<Player, Integer> getLoserAndPoints(){
+    public Map<Player, Integer> getWinnerAndPoints(){
 
+        int maxValue = (Collections.max(getAllPlayersTotalPoints().values()));
+
+        for(Map.Entry<Player, Integer> entry : getAllPlayersTotalPoints().entrySet()) {
+            if(entry.getValue() == maxValue) return Map.of(entry.getKey(),entry.getValue());
+        }
 
         return Map.of();
     }
 
-    public Map<Player, Integer> getWinnerAndPoints(){
+    public Map<Player, Integer> getLoserAndPoints(){
+
+        int minValue = (Collections.min(getAllPlayersTotalPoints().values()));
+
+        for(Map.Entry<Player, Integer> entry : getAllPlayersTotalPoints().entrySet()){
+            if(entry.getValue() == minValue) return Map.of(entry.getKey(), entry.getValue());
+        }
 
         return Map.of();
     }

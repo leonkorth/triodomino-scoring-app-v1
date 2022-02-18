@@ -81,7 +81,7 @@ public class GameServiceTest {
         gameService.addPoints(inputL1).addPoints(inputP1).addPoints(inputL2).addPoints(inputP2);
 
         String expectedName = "Leon";
-        int expectedPoints = 100;
+        int expectedPoints = 300;
         int expectedLengths = 1;
 
 
