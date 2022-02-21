@@ -9,14 +9,13 @@ import java.util.*;
 @Service
 public class GameService {
 
-
+    private Player lastPlayer;
 
     private List<Player> allPlayers = new ArrayList<>();
 
     private Map<Player, List<Integer>> allPlayersAllPoints = new LinkedHashMap<>();
 
     private Map<Player, Integer> allPlayersTotalPoints = new LinkedHashMap<>();
-
 
     public List<Player> startGame(List<Player> players){
         allPlayers = List.copyOf(players);
@@ -36,6 +35,8 @@ public class GameService {
 
         Player player = getAllPlayers().stream().filter(p -> p.getName().equals(name)).findAny().orElse(null);
 
+        lastPlayer = player;
+
         int actualPoints = allPlayersTotalPoints.get(player);
 
         allPlayersTotalPoints.put(player,actualPoints + points);
@@ -49,6 +50,7 @@ public class GameService {
     };
 
     public List<Player> getAllPlayers() {
+        if(allPlayers.isEmpty()) return List.of();
         return allPlayers;
     }
 
@@ -56,8 +58,8 @@ public class GameService {
         return allPlayersAllPoints;
     }
 
-
     public Map<Player, Integer> getPlayerAndPoints(ListType listType){
+
         switch(listType){
             case TOTAL -> {
                 return allPlayersTotalPoints;
@@ -84,5 +86,15 @@ public class GameService {
         }
     }
 
+    public Player getPlayerWhoseTurnItIs(){
 
+        List<Player> allPlayers = List.copyOf(getAllPlayers());
+
+        int index = allPlayers.indexOf(lastPlayer);
+
+        if(index < 0) return new Player("Test");
+        else if(index + 1 == allPlayers.size()) return allPlayers.get(0);
+        else return allPlayers.get(index + 1);
+
+    }
 }

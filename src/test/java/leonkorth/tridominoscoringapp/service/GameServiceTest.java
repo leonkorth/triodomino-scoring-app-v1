@@ -74,7 +74,6 @@ public class GameServiceTest {
 
     }
 
-
     @Test
     @DisplayName("returns the correct winner")
     void returnWinner(){
@@ -154,6 +153,69 @@ public class GameServiceTest {
         assertEquals(expectedName,actualName);
         assertEquals(expectedPoints,actualPoints);
         assertEquals(expectedLengths,actualLength);
+
+    }
+
+    @Test
+    @DisplayName("returns the correct player whose turn it is ")
+    void returnPlayerWhoseTurnItIs(){
+
+        GameService gameService = new GameService();
+        Player p1 = new Player("Leon");
+        Player p2 = new Player("Peonie");
+
+        PlayerMove playerMoveL1 = new PlayerMove();
+        PlayerMove playerMoveL2 = new PlayerMove();
+
+        playerMoveL1.setName("Leon").setPoints(100);
+        playerMoveL2.setName("Leon").setPoints(200);
+
+
+        PlayerMove playerMoveP1 = new PlayerMove();
+
+        playerMoveP1.setName("Peonie").setPoints(111);
+
+        gameService.startGame(List.of(p1,p2));
+
+        gameService.addPoints(playerMoveL1).addPoints(playerMoveP1).addPoints(playerMoveL1);
+
+        String expected = "Peonie";
+        String actual = gameService.getPlayerWhoseTurnItIs().getName();
+
+        assertEquals(expected,actual);
+
+    }
+
+
+    @Test
+    @DisplayName("returns the correct player whose turn it is if all players have same number of moves")
+    void returnPlayerWhoseTurnItIsWithSameMoves(){
+
+        GameService gameService = new GameService();
+        Player p1 = new Player("Leon");
+        Player p2 = new Player("Peonie");
+
+        PlayerMove playerMoveL1 = new PlayerMove();
+        PlayerMove playerMoveL2 = new PlayerMove();
+
+        playerMoveL1.setName("Leon").setPoints(100);
+        playerMoveL2.setName("Leon").setPoints(200);
+
+
+        PlayerMove playerMoveP1 = new PlayerMove();
+        PlayerMove playerMoveP2 = new PlayerMove();
+
+        playerMoveP1.setName("Peonie").setPoints(111);
+        playerMoveP2.setName("Peonie").setPoints(111);
+
+        gameService.startGame(List.of(p1,p2));
+
+        gameService.addPoints(playerMoveL1).addPoints(playerMoveP1).addPoints(playerMoveL1).addPoints(playerMoveP2);
+
+        String expected = "Leon";
+        String actual = gameService.getPlayerWhoseTurnItIs().getName();
+
+        assertEquals(expected,actual);
 
     }
 }

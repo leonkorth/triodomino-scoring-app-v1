@@ -44,6 +44,10 @@
         </tbody>
     </table>
 </div>
+<div class="container" th:switch="${playerWhoseTurnItIs.getName().isBlank()}">
+    <p th:case="${true}"></p>
+    <p th:case="${false}" th:text="${playerWhoseTurnItIs.getName()} + ' ist am Zug.'"></p>
+</div>
 <br>
 <div class="container">
     <table class="dyn-table table" th:each="playerAndAllPoints: ${playerNamesAndAllPoints}">
@@ -59,7 +63,6 @@
         </tbody>
     </table>
 </div>
-
 
 <div class="container">
     <section>

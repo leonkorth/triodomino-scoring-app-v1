@@ -1,5 +1,6 @@
 package leonkorth.tridominoscoringapp.controller;
 
+import leonkorth.tridominoscoringapp.model.Player;
 import leonkorth.tridominoscoringapp.model.PlayerMove;
 import leonkorth.tridominoscoringapp.service.GameService;
 import leonkorth.tridominoscoringapp.service.ListType;
@@ -26,6 +27,8 @@ public class GameController {
 
         model.addAttribute("playerNames",playerService.getAllPlayers());
         model.addAttribute("playerMove",new PlayerMove());
+        model.addAttribute("playerWhoseTurnItIs", new Player(" "));
+
 
         gameService.startGame(playerService.getAllPlayers());
 
@@ -37,8 +40,11 @@ public class GameController {
     @PostMapping("/game")
     public String getPlayerPoints(@ModelAttribute("playerMove") PlayerMove playerMove, Model model){
 
+
+
         gameService.addPoints(playerMove);
 
+        model.addAttribute("playerWhoseTurnItIs", gameService.getPlayerWhoseTurnItIs());
         model.addAttribute("playerNamesAndTotalPoints", gameService.getPlayerAndPoints(ListType.TOTAL));
         model.addAttribute("playerNamesAndAllPoints", gameService.getAllPlayersAllPoints());
         model.addAttribute("playerNames",playerService.getAllPlayers());
