@@ -39,7 +39,7 @@
                 </th>
             </tr>
             <tr class="headings">
-                <th th:each="playerAndPoints: ${playerNamesAndTotalPoints}" class="column-title" th:text="'Gesamtpunkte (' + ${playerAndPoints.key.getName()} +'): ' + ${playerAndPoints.value}"></th>
+                <th th:each="playerAndPoints: ${playerNamesAndTotalPoints}" class="column-title" th:text="'Gesamtpunkte: ' + ${playerAndPoints.value}"></th>
             </tr>
         </tbody>
     </table>

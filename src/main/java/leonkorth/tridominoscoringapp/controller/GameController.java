@@ -36,7 +36,7 @@ public class GameController {
     @PostMapping("/game")
     public String getPlayerPoints(@ModelAttribute("playerMove") PlayerMove playerMove, Model model){
 
-        gameService.addPoints(playerMove.toString());
+        gameService.addPoints(playerMove);
 
         model.addAttribute("playerNamesAndTotalPoints", gameService.getAllPlayersTotalPoints());
         model.addAttribute("playerNamesAndAllPoints", gameService.getAllPlayersAllPoints());

@@ -5,20 +5,25 @@ public class PlayerMove {
     private int points;
     private String name;
 
+    public PlayerMove(){};
+
+
     public int getPoints() {
         return points;
     }
 
-    public void setPoints(int points) {
+    public PlayerMove setPoints(int points) {
         this.points = points;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public PlayerMove setName(String name) {
         this.name = name;
+        return this;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package leonkorth.tridominoscoringapp.service;
 
 import leonkorth.tridominoscoringapp.model.Player;
+import leonkorth.tridominoscoringapp.model.PlayerMove;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -26,13 +27,12 @@ public class GameService {
         return allPlayers;
     }
 
-    public GameService addPoints(String input){
+    public GameService addPoints(PlayerMove playerMove){
 
-        String[] part = input.split("(?<=\\D)(?=\\d)");
+        //String[] part = input.split("(?<=\\D)(?=\\d)");
 
-        String name = part[0];
-        int points = Integer.parseInt(part[1]);
-
+        String name = playerMove.getName();
+        int points = playerMove.getPoints();
         Player player = getAllPlayers().stream().filter(p -> p.getName().equals(name)).findAny().orElse(null);
 
         int actualPoints = allPlayersTotalPoints.get(player);

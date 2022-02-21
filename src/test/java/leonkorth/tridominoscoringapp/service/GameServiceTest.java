@@ -1,6 +1,7 @@
 package leonkorth.tridominoscoringapp.service;
 
 import leonkorth.tridominoscoringapp.model.Player;
+import leonkorth.tridominoscoringapp.model.PlayerMove;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,25 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GameServiceTest {
 
-    @Test
-    @DisplayName("splits the input correctly and adds point")
-    void splitInput(){
-
-        GameService gameService = new GameService();
-        Player p1 = new Player("Leon");
-
-        String input = "Leon100";
-
-        gameService.startGame(List.of(p1));
-
-        gameService.addPoints(input);
-
-        int expected = 100;
-
-        int actual = gameService.getAllPlayersTotalPoints().get(p1);
-
-        assertEquals(expected,actual);
-    }
 
     @Test
     @DisplayName("adds the points correctly")
@@ -38,16 +20,23 @@ public class GameServiceTest {
         Player p1 = new Player("Leon");
         Player p2 = new Player("Peonie");
 
-        String inputL1 = "Leon100";
-        String inputL2 = "Leon200";
+        PlayerMove playerMoveL1 = new PlayerMove();
+        PlayerMove playerMoveL2 = new PlayerMove();
 
-        String inputP1="Peonie111";
-        String inputP2="Peonie111";
+        playerMoveL1.setName("Leon").setPoints(100);
+        playerMoveL2.setName("Leon").setPoints(200);
+
+
+        PlayerMove playerMoveP1 = new PlayerMove();
+        PlayerMove playerMoveP2 = new PlayerMove();
+
+        playerMoveP1.setName("Peonie").setPoints(111);
+        playerMoveP2.setName("Peonie").setPoints(111);
 
 
         gameService.startGame(List.of(p1,p2));
 
-        gameService.addPoints(inputL1).addPoints(inputP1).addPoints(inputL2).addPoints(inputP2);
+        gameService.addPoints(playerMoveL1).addPoints(playerMoveL2).addPoints(playerMoveP1).addPoints(playerMoveP2);
 
         int expectedL = 300;
         int expectedP = 222;
@@ -58,6 +47,30 @@ public class GameServiceTest {
         assertEquals(expectedL,actualL);
         assertEquals(expectedP,actualP);
 
+    }
+
+    @Test
+    @DisplayName("can deal with negative numbers")
+    void subtractPoints(){
+
+        GameService gameService = new GameService();
+        Player p1 = new Player("Leon");
+
+        PlayerMove playerMoveL1 = new PlayerMove();
+        PlayerMove playerMoveL2 = new PlayerMove();
+
+        playerMoveL1.setName("Leon").setPoints(100);
+        playerMoveL2.setName("Leon").setPoints(-50);
+
+        gameService.startGame(List.of(p1));
+
+        gameService.addPoints(playerMoveL1).addPoints(playerMoveL2);
+
+        int expected = 50;
+        int actual = gameService.getAllPlayersTotalPoints().get(p1);
+
+        assertEquals(expected,actual);
+
 
     }
 
@@ -65,25 +78,32 @@ public class GameServiceTest {
     @Test
     @DisplayName("returns the correct winner")
     void returnWinner(){
+
         GameService gameService = new GameService();
         Player p1 = new Player("Leon");
         Player p2 = new Player("Peonie");
 
-        String inputL1 = "Leon100";
-        String inputL2 = "Leon200";
+        PlayerMove playerMoveL1 = new PlayerMove();
+        PlayerMove playerMoveL2 = new PlayerMove();
 
-        String inputP1="Peonie111";
-        String inputP2="Peonie111";
+        playerMoveL1.setName("Leon").setPoints(100);
+        playerMoveL2.setName("Leon").setPoints(200);
+
+
+        PlayerMove playerMoveP1 = new PlayerMove();
+        PlayerMove playerMoveP2 = new PlayerMove();
+
+        playerMoveP1.setName("Peonie").setPoints(111);
+        playerMoveP2.setName("Peonie").setPoints(111);
 
 
         gameService.startGame(List.of(p1,p2));
 
-        gameService.addPoints(inputL1).addPoints(inputP1).addPoints(inputL2).addPoints(inputP2);
+        gameService.addPoints(playerMoveL1).addPoints(playerMoveL2).addPoints(playerMoveP1).addPoints(playerMoveP2);
 
         String expectedName = "Leon";
         int expectedPoints = 300;
         int expectedLengths = 1;
-
 
 
         String actualName = gameService.getWinnerAndPoints().keySet().stream().findFirst().orElse(new Player(" ")).getName();
@@ -99,25 +119,32 @@ public class GameServiceTest {
     @Test
     @DisplayName("returns the correct loser")
     void returnLoser(){
+
         GameService gameService = new GameService();
         Player p1 = new Player("Leon");
         Player p2 = new Player("Peonie");
 
-        String inputL1 = "Leon100";
-        String inputL2 = "Leon200";
+        PlayerMove playerMoveL1 = new PlayerMove();
+        PlayerMove playerMoveL2 = new PlayerMove();
 
-        String inputP1="Peonie111";
-        String inputP2="Peonie111";
+        playerMoveL1.setName("Leon").setPoints(100);
+        playerMoveL2.setName("Leon").setPoints(200);
+
+
+        PlayerMove playerMoveP1 = new PlayerMove();
+        PlayerMove playerMoveP2 = new PlayerMove();
+
+        playerMoveP1.setName("Peonie").setPoints(111);
+        playerMoveP2.setName("Peonie").setPoints(111);
 
 
         gameService.startGame(List.of(p1,p2));
 
-        gameService.addPoints(inputL1).addPoints(inputP1).addPoints(inputL2).addPoints(inputP2);
+        gameService.addPoints(playerMoveL1).addPoints(playerMoveL2).addPoints(playerMoveP1).addPoints(playerMoveP2);
 
         String expectedName = "Peonie";
         int expectedPoints = 222;
         int expectedLengths = 1;
-
 
 
         String actualName = gameService.getLoserAndPoints().keySet().stream().findFirst().orElse(new Player(" ")).getName();
