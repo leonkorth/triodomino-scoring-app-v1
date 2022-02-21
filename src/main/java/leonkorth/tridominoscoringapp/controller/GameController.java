@@ -2,6 +2,7 @@ package leonkorth.tridominoscoringapp.controller;
 
 import leonkorth.tridominoscoringapp.model.PlayerMove;
 import leonkorth.tridominoscoringapp.service.GameService;
+import leonkorth.tridominoscoringapp.service.ListType;
 import leonkorth.tridominoscoringapp.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +39,7 @@ public class GameController {
 
         gameService.addPoints(playerMove);
 
-        model.addAttribute("playerNamesAndTotalPoints", gameService.getAllPlayersTotalPoints());
+        model.addAttribute("playerNamesAndTotalPoints", gameService.getPlayerAndPoints(ListType.TOTAL));
         model.addAttribute("playerNamesAndAllPoints", gameService.getAllPlayersAllPoints());
         model.addAttribute("playerNames",playerService.getAllPlayers());
         model.addAttribute("playerMove",new PlayerMove());

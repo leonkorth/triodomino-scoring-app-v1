@@ -1,6 +1,7 @@
 package leonkorth.tridominoscoringapp.controller;
 
 import leonkorth.tridominoscoringapp.service.GameService;
+import leonkorth.tridominoscoringapp.service.ListType;
 import leonkorth.tridominoscoringapp.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +22,9 @@ public class FinalController {
     public String endGame(Model model){
 
 
-        model.addAttribute("playerNamesAndTotalPoints", gameService.getAllPlayersTotalPoints());
-        model.addAttribute("winner", gameService.getWinnerAndPoints());
-        model.addAttribute("loser", gameService.getLoserAndPoints());
+        model.addAttribute("playerNamesAndTotalPoints", gameService.getPlayerAndPoints(ListType.TOTAL));
+        model.addAttribute("winner", gameService.getPlayerAndPoints(ListType.WINNER));
+        model.addAttribute("loser", gameService.getPlayerAndPoints(ListType.LOSER));
 
 
         return "final";

@@ -41,8 +41,8 @@ public class GameServiceTest {
         int expectedL = 300;
         int expectedP = 222;
 
-        int actualL = gameService.getAllPlayersTotalPoints().get(p1);
-        int actualP = gameService.getAllPlayersTotalPoints().get(p2);
+        int actualL = gameService.getPlayerAndPoints(ListType.TOTAL).get(p1);
+        int actualP = gameService.getPlayerAndPoints(ListType.TOTAL).get(p2);
 
         assertEquals(expectedL,actualL);
         assertEquals(expectedP,actualP);
@@ -67,7 +67,7 @@ public class GameServiceTest {
         gameService.addPoints(playerMoveL1).addPoints(playerMoveL2);
 
         int expected = 50;
-        int actual = gameService.getAllPlayersTotalPoints().get(p1);
+        int actual = gameService.getPlayerAndPoints(ListType.TOTAL).get(p1);
 
         assertEquals(expected,actual);
 
@@ -106,9 +106,9 @@ public class GameServiceTest {
         int expectedLengths = 1;
 
 
-        String actualName = gameService.getWinnerAndPoints().keySet().stream().findFirst().orElse(new Player(" ")).getName();
-        int actualPoints = gameService.getWinnerAndPoints().values().stream().findFirst().orElse(0);
-        int actualLength = gameService.getWinnerAndPoints().size();
+        String actualName = gameService.getPlayerAndPoints(ListType.WINNER).keySet().stream().findFirst().orElse(new Player(" ")).getName();
+        int actualPoints = gameService.getPlayerAndPoints(ListType.WINNER).values().stream().findFirst().orElse(0);
+        int actualLength = gameService.getPlayerAndPoints(ListType.WINNER).size();
 
         assertEquals(expectedName,actualName);
         assertEquals(expectedPoints,actualPoints);
@@ -147,9 +147,9 @@ public class GameServiceTest {
         int expectedLengths = 1;
 
 
-        String actualName = gameService.getLoserAndPoints().keySet().stream().findFirst().orElse(new Player(" ")).getName();
-        int actualPoints = gameService.getLoserAndPoints().values().stream().findFirst().orElse(0);
-        int actualLength = gameService.getLoserAndPoints().size();
+        String actualName = gameService.getPlayerAndPoints(ListType.LOSER).keySet().stream().findFirst().orElse(new Player(" ")).getName();
+        int actualPoints = gameService.getPlayerAndPoints(ListType.LOSER).values().stream().findFirst().orElse(0);
+        int actualLength = gameService.getPlayerAndPoints(ListType.LOSER).size();
 
         assertEquals(expectedName,actualName);
         assertEquals(expectedPoints,actualPoints);
