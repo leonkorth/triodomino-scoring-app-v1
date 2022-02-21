@@ -28,7 +28,7 @@
                     <div class="container">
                         <form action="#" th:action="@{/game}" th:object="${playerMove}" method="post">
                             <div class="form-group">
-                                <p>Name: <input type="text" th:field="*{name}" th:placeholder="${playerName.getName}"/></p>
+                               <input type="hidden" th:value="${playerName.getName}" id="name" name="name"/>
                             </div>
                             <div class="form-group">
                                 <p>Punkte: <input type="number" th:field="*{points}"/></p>
