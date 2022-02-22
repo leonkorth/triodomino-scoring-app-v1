@@ -46,9 +46,9 @@
 </div>
 <div class="container" th:switch="${playerWhoseTurnItIs.getName().isBlank()}">
     <div th:case="${true}">
-        <p th:if="${playerCount <= 2}">Es müssen 9 Steine gezogen werden.</p>
-        <p th:if="${playerCount > 2 && playerCount <= 4}">Es müssen 7 Steine gezogen werden.</p>
-        <p th:if="${playerCount >= 5 && playerCount <= 6}">Es müssen 6 Steine gezogen werden.</p>
+        <p th:if="${playerCount <= 2}">Es müssen 12 Steine gezogen werden.</p>
+        <p th:if="${playerCount > 2 && playerCount <= 4}">Es müssen 9 Steine gezogen werden.</p>
+        <p th:if="${playerCount >= 5 && playerCount <= 6}">Es müssen 7 Steine gezogen werden.</p>
         <p th:if="${playerCount > 6}">Zu viele Spieler!</p>
 
     </div>
