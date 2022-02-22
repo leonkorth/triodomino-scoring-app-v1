@@ -25,12 +25,14 @@ public class GameController {
     public String startGame(Model model){
 
 
+        gameService.startGame(playerService.getAllPlayers());
+
         model.addAttribute("playerNames",playerService.getAllPlayers());
         model.addAttribute("playerMove",new PlayerMove());
         model.addAttribute("playerWhoseTurnItIs", new Player(" "));
+        model.addAttribute("playerCount", gameService.getPlayerAndPoints(ListType.TOTAL).size());
 
 
-        gameService.startGame(playerService.getAllPlayers());
 
 
 
@@ -49,6 +51,7 @@ public class GameController {
         model.addAttribute("playerNamesAndAllPoints", gameService.getAllPlayersAllPoints());
         model.addAttribute("playerNames",playerService.getAllPlayers());
         model.addAttribute("playerMove",new PlayerMove());
+        model.addAttribute("playerCount", gameService.getPlayerAndPoints(ListType.TOTAL).size());
 
         return "game";
     }
