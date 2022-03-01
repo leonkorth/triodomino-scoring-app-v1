@@ -5,9 +5,27 @@ import leonkorth.tridominoscoringapp.model.PlayerMove;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class GameService {
+
+    public enum SortType{
+        REVERSED,
+        NORMAL
+    }
+
+    private static <T> Collector<T, ?, Stream<T> > reverseStream()
+    {
+        return Collectors
+                .collectingAndThen(Collectors.toList(),
+                        list -> {
+                            Collections.reverse(list);
+                            return list.stream();
+                        });
+    }
 
     private Player lastPlayer;
 
@@ -17,14 +35,14 @@ public class GameService {
 
     private Map<Player, Integer> allPlayersTotalPoints = new LinkedHashMap<>();
 
-    public List<Player> startGame(List<Player> players){
+    public GameService startGame(List<Player> players){
         allPlayers = List.copyOf(players);
 
         allPlayers.forEach(p -> allPlayersAllPoints.put(p, List.of()));
 
         allPlayers.forEach(p -> allPlayersTotalPoints.put(p, 0));
 
-        return allPlayers;
+        return this;
     }
 
     public GameService addPoints(PlayerMove playerMove){
@@ -54,8 +72,27 @@ public class GameService {
         return allPlayers;
     }
 
-    public Map<Player, List<Integer>> getAllPlayersAllPoints() {
-        return allPlayersAllPoints;
+    public Map<Player, List<Integer>> getAllPlayersAllPoints(SortType sortType) {
+        switch (sortType){
+            case NORMAL -> {
+                return allPlayersAllPoints;
+            }
+            case REVERSED -> {
+
+                Map<Player,List<Integer>> newMap = new LinkedHashMap<>();
+                for(var entry : allPlayersAllPoints.entrySet()){
+
+                    List<Integer> sorted = entry.getValue()
+                            .parallelStream()
+                            .collect(reverseStream())
+                            .toList();
+
+                    newMap.put(entry.getKey(),sorted);
+                }
+                return newMap;
+            }
+        }
+        return null;
     }
 
     public Map<Player, Integer> getPlayerAndPoints(ListType listType){

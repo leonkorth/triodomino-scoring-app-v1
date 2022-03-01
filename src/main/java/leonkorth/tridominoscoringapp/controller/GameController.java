@@ -48,7 +48,7 @@ public class GameController {
 
         model.addAttribute("playerWhoseTurnItIs", gameService.getPlayerWhoseTurnItIs());
         model.addAttribute("playerNamesAndTotalPoints", gameService.getPlayerAndPoints(ListType.TOTAL));
-        model.addAttribute("playerNamesAndAllPoints", gameService.getAllPlayersAllPoints());
+        model.addAttribute("playerNamesAndAllPoints", gameService.getAllPlayersAllPoints(GameService.SortType.REVERSED));
         model.addAttribute("playerNames",playerService.getAllPlayers());
         model.addAttribute("playerMove",new PlayerMove());
         model.addAttribute("playerCount", gameService.getPlayerAndPoints(ListType.TOTAL).size());

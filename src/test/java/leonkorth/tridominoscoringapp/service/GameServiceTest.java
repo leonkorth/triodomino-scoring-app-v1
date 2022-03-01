@@ -218,4 +218,61 @@ public class GameServiceTest {
         assertEquals(expected,actual);
 
     }
+
+
+    @Test
+    @DisplayName("can sort the list in the correct reversed order")
+    void returnSortedList(){
+
+        GameService gameService = new GameService();
+        Player p1 = new Player("Leon");
+        PlayerMove pm1 = new PlayerMove();
+        PlayerMove pm2 = new PlayerMove();
+        PlayerMove pm3 = new PlayerMove();
+        PlayerMove pm4 = new PlayerMove();
+
+
+        pm1.setPoints(22).setName("Leon");
+        pm2.setPoints(11).setName("Leon");
+        pm3.setPoints(21).setName("Leon");
+        pm4.setPoints(33).setName("Leon");
+
+        gameService.startGame(List.of(p1)).addPoints(pm1).addPoints(pm2).addPoints(pm3).addPoints(pm4);
+
+        List<Integer> expected = List.of(33,21,11,22);
+
+        List<Integer> actual = gameService.getAllPlayersAllPoints(GameService.SortType.REVERSED).get(p1);
+
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    @DisplayName("can sort the list in the correct normal order")
+    void returnUnsortedList(){
+
+        GameService gameService = new GameService();
+        Player p1 = new Player("Leon");
+        PlayerMove pm1 = new PlayerMove();
+        PlayerMove pm2 = new PlayerMove();
+        PlayerMove pm3 = new PlayerMove();
+        PlayerMove pm4 = new PlayerMove();
+
+
+        pm1.setPoints(22).setName("Leon");
+        pm2.setPoints(11).setName("Leon");
+        pm3.setPoints(21).setName("Leon");
+        pm4.setPoints(33).setName("Leon");
+
+        gameService.startGame(List.of(p1)).addPoints(pm1).addPoints(pm2).addPoints(pm3).addPoints(pm4);
+
+        List<Integer> expected = List.of(22,11,21,33);
+
+        List<Integer> actual = gameService.getAllPlayersAllPoints(GameService.SortType.NORMAL).get(p1);
+
+        assertEquals(expected,actual);
+
+    }
+
 }
+
