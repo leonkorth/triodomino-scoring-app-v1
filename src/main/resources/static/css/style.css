@@ -1,3 +1,6 @@
+html { overflow-y: scroll; }
+
+
 body{
 	background-color: lightgrey;
 	color: #333333;
@@ -71,6 +74,15 @@ body{
 	width: 50%;
 }
 
+.wrapper {
+	padding-bottom: 2.5rem;
+}
+
+#page-container {
+	position: relative;
+	min-height: 100vh;
+}
+
 #main-header{
 	background-color: skyblue;
 	color: #fff;
@@ -116,13 +128,15 @@ body{
 
 
 #main-footer{
-	position: fixed;
+	position: absolute;
+	left: 0;
 	bottom: 0;
 	width: 100%;
 	background-color: grey;
 	color: #fff;
 	text-align: center;
+	/*
 	padding: 20px;
 	margin-top: 40px;
-
+	*/
 }

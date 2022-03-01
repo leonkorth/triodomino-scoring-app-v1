@@ -8,81 +8,86 @@
 
 </head>
 <body>
-<header id="main-header">
-    <div class="container">
-        <h1>Triodomino Game</h1>
-    </div>
-</header>
+<div id="page-container">
+    <header id="main-header">
+        <div class="container">
+            <h1>Triodomino Game</h1>
+        </div>
+    </header>
 
+    <div class="wrapper">
+        <div class="container">
+            <table class="table">
+                <thead>
+                <tr class="headings">
+                    <th th:each="playerName: ${playerNames}" class="column-title" th:text="${playerName.getName}"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th th:each="playerName: ${playerNames}">
+                        <div class="container">
+                            <form action="#" th:action="@{/game}" th:object="${playerMove}" method="post">
+                                <div class="form-group">
+                                    <input type="hidden" th:value="${playerName.getName}" id="name" name="name"/>
+                                </div>
+                                <div class="form-group">
+                                    <p>Punkte: <input type="number" th:field="*{points}"/></p>
+                                </div>
+                                <div class="form-group">
+                                    <input class="button" type="submit" value="hinzufügen">
+                                </div>
+                            </form>
+                        </div>
+                    </th>
+                </tr>
+                <tr class="headings">
+                    <th th:each="playerAndPoints: ${playerNamesAndTotalPoints}" class="column-title" th:text="'Gesamtpunkte: ' + ${playerAndPoints.value}"></th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container" th:switch="${playerWhoseTurnItIs.getName().isBlank()}">
+            <div th:case="${true}">
+                <p th:if="${playerCount <= 2}">Es müssen 12 Steine gezogen werden.</p>
+                <p th:if="${playerCount > 2 && playerCount <= 4}">Es müssen 9 Steine gezogen werden.</p>
+                <p th:if="${playerCount >= 5 && playerCount <= 6}">Es müssen 7 Steine gezogen werden.</p>
+                <p th:if="${playerCount > 6}">Zu viele Spieler!</p>
 
-<div class="container">
-    <table class="table">
-        <thead>
-            <tr class="headings">
-                <th th:each="playerName: ${playerNames}" class="column-title" th:text="${playerName.getName}"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th th:each="playerName: ${playerNames}">
-                    <div class="container">
-                        <form action="#" th:action="@{/game}" th:object="${playerMove}" method="post">
-                            <div class="form-group">
-                               <input type="hidden" th:value="${playerName.getName}" id="name" name="name"/>
-                            </div>
-                            <div class="form-group">
-                                <p>Punkte: <input type="number" th:field="*{points}"/></p>
-                            </div>
-                            <input class="button" type="submit" value="hinzufügen">
-                        </form>
-                    </div>
-                </th>
-            </tr>
-            <tr class="headings">
-                <th th:each="playerAndPoints: ${playerNamesAndTotalPoints}" class="column-title" th:text="'Gesamtpunkte: ' + ${playerAndPoints.value}"></th>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<div class="container" th:switch="${playerWhoseTurnItIs.getName().isBlank()}">
-    <div th:case="${true}">
-        <p th:if="${playerCount <= 2}">Es müssen 12 Steine gezogen werden.</p>
-        <p th:if="${playerCount > 2 && playerCount <= 4}">Es müssen 9 Steine gezogen werden.</p>
-        <p th:if="${playerCount >= 5 && playerCount <= 6}">Es müssen 7 Steine gezogen werden.</p>
-        <p th:if="${playerCount > 6}">Zu viele Spieler!</p>
+            </div>
 
-    </div>
-
-    <p th:case="${false}" th:text="${playerWhoseTurnItIs.getName()} + ' ist am Zug.'"></p>
-</div>
-<br>
-<div class="container">
-    <table class="dyn-table table" th:each="playerAndAllPoints: ${playerNamesAndAllPoints}">
-        <thead class="headings">
+            <p th:case="${false}" th:text="${playerWhoseTurnItIs.getName()} + ' ist am Zug.'"></p>
+        </div>
+        <br>
+        <div class="container">
+            <table class="dyn-table table" th:each="playerAndAllPoints: ${playerNamesAndAllPoints}">
+                <thead class="headings">
                 <tr>
                     <th class="column-title" th:text="'Punktehistorie (' + ${playerAndAllPoints.key.getName()} + ')'"></th>
                 </tr>
-        </thead>
-        <tbody>
-              <tr th:each="playerPoints: ${playerAndAllPoints.value}">
-                  <td th:text="${playerPoints}"></td>
-              </tr>
-        </tbody>
-    </table>
+                </thead>
+                <tbody>
+                <tr th:each="playerPoints: ${playerAndAllPoints.value}">
+                    <td th:text="${playerPoints}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    <div class="container">
+            <form th:action="@{/final}" method="get">
+                <input class="button" type="submit" value="Spiel beenden">
+            </form>
+        </div>
+    </div>
+
+    <br>
+
+    <footer id="main-footer" class="footer">
+        <p>Copyright &copy; 2022 Leon Korth</p>
+    </footer>
 </div>
 
-<div class="container">
-    <section>
-        <form th:action="@{/final}" method="get">
-            <input class="button" type="submit" value="Spiel beenden">
-        </form>
-    </section>
-</div>
 
-
-
-<footer id="main-footer">
-    <p>Copyright &copy; 2022 Leon Korth</p>
-</footer>
 </body>
 </html>
