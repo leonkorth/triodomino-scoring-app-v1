@@ -3,7 +3,7 @@ package leonkorth.tridominoscoringapp.model;
 public class PlayerDraw {
 
     private int drawCount;
-    private String drawName;
+    private String drawPlayerName;
 
     public PlayerDraw(){};
 
@@ -17,17 +17,17 @@ public class PlayerDraw {
         return this;
     }
 
-    public String getDrawName() {
-        return drawName;
+    public String getDrawPlayerName() {
+        return drawPlayerName;
     }
 
-    public PlayerDraw setDrawName(String drawName) {
-        this.drawName = drawName;
+    public PlayerDraw setDrawPlayerName(String drawPlayerName) {
+        this.drawPlayerName = drawPlayerName;
         return this;
     }
 
     @Override
     public String toString() {
-        return drawName + drawCount;
+        return drawPlayerName + drawCount;
     }
 }

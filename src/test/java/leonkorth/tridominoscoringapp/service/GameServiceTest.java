@@ -1,6 +1,7 @@
 package leonkorth.tridominoscoringapp.service;
 
 import leonkorth.tridominoscoringapp.model.Player;
+import leonkorth.tridominoscoringapp.model.PlayerDraw;
 import leonkorth.tridominoscoringapp.model.PlayerMove;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -274,5 +275,28 @@ public class GameServiceTest {
 
     }
 
+
+    @Test
+    @DisplayName("returns the correct amount of draws of a player")
+    void returnDrawCountOfPlayer(){
+
+        GameService gameService = new GameService();
+
+        Player p1 = new Player("Leon");
+        Player p2 = new Player("Max");
+
+        PlayerDraw pd1 = new PlayerDraw();
+        PlayerDraw pd2 = new PlayerDraw();
+        pd1.setDrawPlayerName("Max").setPoints(1);
+        pd2.setDrawPlayerName("Max").setPoints(1);
+
+
+        gameService.startGame(List.of(p1,p2)).increasePlayerDrawCount(pd1).increasePlayerDrawCount(pd2);
+
+        List<Integer> expected = List.of(2,0,0);
+        List<Integer> actual = gameService.getAllPlayersSpecialPoints().get(p2);
+
+        assertEquals(expected,actual);
+    }
 }
 

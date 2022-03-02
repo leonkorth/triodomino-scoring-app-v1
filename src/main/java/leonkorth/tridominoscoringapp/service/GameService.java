@@ -1,6 +1,7 @@
 package leonkorth.tridominoscoringapp.service;
 
 import leonkorth.tridominoscoringapp.model.Player;
+import leonkorth.tridominoscoringapp.model.PlayerDraw;
 import leonkorth.tridominoscoringapp.model.PlayerMove;
 import org.springframework.stereotype.Service;
 
@@ -35,10 +36,15 @@ public class GameService {
 
     private Map<Player, Integer> allPlayersTotalPoints = new LinkedHashMap<>();
 
+    private Map<Player, List<Integer>> allPlayersSpecialPoints = new LinkedHashMap<>();
+
+
     public GameService startGame(List<Player> players){
         allPlayers = List.copyOf(players);
 
         allPlayers.forEach(p -> allPlayersAllPoints.put(p, List.of()));
+
+        allPlayers.forEach(p -> allPlayersSpecialPoints.put(p, List.of(0,0,0))); /* gezogen, zumachen, brücke */
 
         allPlayers.forEach(p -> allPlayersTotalPoints.put(p, 0));
 
@@ -66,6 +72,22 @@ public class GameService {
 
         return this;
     };
+
+    public GameService increasePlayerDrawCount(PlayerDraw playerDraw){
+
+        String name = playerDraw.getDrawPlayerName();
+        int drawCount = playerDraw.getDrawCount();
+
+        Player player = getAllPlayers().stream().filter(p -> p.getName().equals(name)).findAny().orElse(null);
+
+        List<Integer> oldSpecialPoints = new ArrayList<>(List.copyOf(allPlayersSpecialPoints.get(player)));
+
+        oldSpecialPoints.set(0, oldSpecialPoints.get(0) + drawCount);
+
+        allPlayersSpecialPoints.put(player, oldSpecialPoints);
+
+        return this;
+    }
 
     public List<Player> getAllPlayers() {
         if(allPlayers.isEmpty()) return List.of();
@@ -133,5 +155,9 @@ public class GameService {
         else if(index + 1 == allPlayers.size()) return allPlayers.get(0);
         else return allPlayers.get(index + 1);
 
+    }
+
+    public Map<Player, List<Integer>> getAllPlayersSpecialPoints() {
+        return allPlayersSpecialPoints;
     }
 }
