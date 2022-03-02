@@ -1,6 +1,7 @@
 package leonkorth.tridominoscoringapp.controller;
 
 import leonkorth.tridominoscoringapp.model.Player;
+import leonkorth.tridominoscoringapp.model.PlayerDraw;
 import leonkorth.tridominoscoringapp.model.PlayerMove;
 import leonkorth.tridominoscoringapp.service.GameService;
 import leonkorth.tridominoscoringapp.service.ListType;
@@ -29,6 +30,7 @@ public class GameController {
 
         model.addAttribute("playerNames",playerService.getAllPlayers());
         model.addAttribute("playerMove",new PlayerMove());
+        model.addAttribute("playerDraw",new PlayerDraw());
         model.addAttribute("playerWhoseTurnItIs", new Player(" "));
         model.addAttribute("playerCount", gameService.getPlayerAndPoints(ListType.TOTAL).size());
 
@@ -51,6 +53,7 @@ public class GameController {
         model.addAttribute("playerNamesAndAllPoints", gameService.getAllPlayersAllPoints(GameService.SortType.REVERSED));
         model.addAttribute("playerNames",playerService.getAllPlayers());
         model.addAttribute("playerMove",new PlayerMove());
+        model.addAttribute("playerDraw",new PlayerDraw());
         model.addAttribute("playerCount", gameService.getPlayerAndPoints(ListType.TOTAL).size());
 
         return "game";
