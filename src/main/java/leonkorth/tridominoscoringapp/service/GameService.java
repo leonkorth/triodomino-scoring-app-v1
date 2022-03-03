@@ -75,6 +75,8 @@ public class GameService {
 
     public GameService increasePlayerDrawCount(PlayerDraw playerDraw){
 
+        System.out.println(playerDraw);
+
         String name = playerDraw.getDrawPlayerName();
         int drawCount = playerDraw.getDrawCount();
 

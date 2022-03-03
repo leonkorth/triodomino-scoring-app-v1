@@ -41,13 +41,19 @@ public class GameController {
         return "game";
     }
 
-    @PostMapping("/game")
+    @PostMapping("/game/addPoints")
     public String getPlayerPoints(@ModelAttribute("playerMove") PlayerMove playerMove, Model model){
 
 
 
         gameService.addPoints(playerMove);
 
+        extractedModel(model);
+
+        return "game";
+    }
+
+    private void extractedModel(Model model) {
         model.addAttribute("playerWhoseTurnItIs", gameService.getPlayerWhoseTurnItIs());
         model.addAttribute("playerNamesAndTotalPoints", gameService.getPlayerAndPoints(ListType.TOTAL));
         model.addAttribute("playerNamesAndAllPoints", gameService.getAllPlayersAllPoints(GameService.SortType.REVERSED));
@@ -55,8 +61,22 @@ public class GameController {
         model.addAttribute("playerMove",new PlayerMove());
         model.addAttribute("playerDraw",new PlayerDraw());
         model.addAttribute("playerCount", gameService.getPlayerAndPoints(ListType.TOTAL).size());
+        model.addAttribute("playerNamesAndSpecialPoints", gameService.getAllPlayersSpecialPoints());
+    }
+
+
+    @PostMapping("/game/addDrawCount")
+    public String getPlayerPoints(@ModelAttribute("playerDraw") PlayerDraw playerDraw, Model model){
+
+
+
+        gameService.increasePlayerDrawCount(playerDraw);
+
+        extractedModel(model);
 
         return "game";
     }
+
+
 
 }

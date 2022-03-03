@@ -2,10 +2,10 @@ package leonkorth.tridominoscoringapp.model;
 
 public class PlayerDraw {
 
-    private int drawCount;
+    private int drawCount = 1;
     private String drawPlayerName;
 
-    public PlayerDraw(){};
+    public PlayerDraw(){}
 
 
     public int getDrawCount() {
