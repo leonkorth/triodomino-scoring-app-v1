@@ -61,7 +61,7 @@ public class GameController {
         model.addAttribute("playerMove",new PlayerMove());
         model.addAttribute("playerDraw",new PlayerDraw());
         model.addAttribute("playerCount", gameService.getPlayerAndPoints(ListType.TOTAL).size());
-        model.addAttribute("playerNamesAndSpecialPoints", gameService.getAllPlayersSpecialPoints());
+        model.addAttribute("playerNamesAndSpecialPoints", gameService.getAllPlayersSpecialPoints(ListType.TOTAL,0));
     }
 
 

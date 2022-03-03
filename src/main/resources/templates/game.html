@@ -60,7 +60,7 @@
                     <th th:each="playerAndPoints: ${playerNamesAndTotalPoints}" class="column-title" th:text="'Punkte: ' + ${playerAndPoints.value}"></th>
                 </tr>
                 <tr class="headings">
-                    <th th:each="playerSpecialPoints: ${playerNamesAndSpecialPoints}" class="column-title" th:text="'Gezogen: ' + ${playerSpecialPoints.value.get(0) + 'x'}"></th>
+                    <th th:each="playerSpecialPoints: ${playerNamesAndSpecialPoints}" class="column-title" th:text="'Gezogen: ' + ${playerSpecialPoints.value + 'x'}"></th>
                 </tr>
                 </tbody>
             </table>
@@ -83,21 +83,21 @@
             </form>
         </div>
     </div>
-        <br>
-        <div class="container">
-            <table class="dyn-table table" th:each="playerAndAllPoints: ${playerNamesAndAllPoints}">
-                <thead class="headings">
-                <tr>
-                    <th class="column-title" th:text="'Punktehistorie (' + ${playerAndAllPoints.key.getName()} + ')'"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="playerPoints: ${playerAndAllPoints.value}">
-                    <td th:text="${playerPoints}"></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+    <br>
+    <div class="container">
+        <table class="dyn-table table" th:each="playerAndAllPoints: ${playerNamesAndAllPoints}">
+            <thead class="headings">
+            <tr>
+                <th class="column-title" th:text="'Punktehistorie (' + ${playerAndAllPoints.key.getName()} + ')'"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="playerPoints: ${playerAndAllPoints.value}">
+                <td th:text="${playerPoints}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
 
 

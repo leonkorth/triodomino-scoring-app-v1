@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -293,8 +294,55 @@ public class GameServiceTest {
 
         gameService.startGame(List.of(p1,p2)).increasePlayerDrawCount(pd1).increasePlayerDrawCount(pd2);
 
-        List<Integer> expected = List.of(2,0,0);
-        List<Integer> actual = gameService.getAllPlayersSpecialPoints().get(p2);
+        int expected = 2;
+        int actual = gameService.getAllPlayersSpecialPoints(ListType.TOTAL,0).get(p2);
+
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @DisplayName("returns the correct player with the most draws")
+    void returnPlayerWithMostCounts(){
+
+        GameService gameService = new GameService();
+
+        Player p1 = new Player("Leon");
+        Player p2 = new Player("Max");
+
+        PlayerDraw pd1 = new PlayerDraw();
+        PlayerDraw pd2 = new PlayerDraw();
+        pd1.setDrawPlayerName("Max").setPoints(1);
+        pd2.setDrawPlayerName("Max").setPoints(1);
+
+
+        gameService.startGame(List.of(p1,p2)).increasePlayerDrawCount(pd1).increasePlayerDrawCount(pd2);
+
+        Map<Player, Integer> expected = Map.of(p2,2);
+        Map<Player, Integer> actual = gameService.getAllPlayersSpecialPoints(ListType.LOSER,0);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @DisplayName("returns the correct player with the fewest draws")
+    void returnPlayerWithFewestCounts(){
+
+        GameService gameService = new GameService();
+
+        Player p1 = new Player("Leon");
+        Player p2 = new Player("Max");
+
+        PlayerDraw pd1 = new PlayerDraw();
+        PlayerDraw pd2 = new PlayerDraw();
+        pd1.setDrawPlayerName("Max").setPoints(1);
+        pd2.setDrawPlayerName("Max").setPoints(1);
+
+
+        gameService.startGame(List.of(p1,p2)).increasePlayerDrawCount(pd1).increasePlayerDrawCount(pd2);
+
+        Map<Player, Integer> expected = Map.of(p1,0);
+        Map<Player, Integer> actual = gameService.getAllPlayersSpecialPoints(ListType.WINNER,0);
 
         assertEquals(expected,actual);
     }

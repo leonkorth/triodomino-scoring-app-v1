@@ -75,8 +75,6 @@ public class GameService {
 
     public GameService increasePlayerDrawCount(PlayerDraw playerDraw){
 
-        System.out.println(playerDraw);
-
         String name = playerDraw.getDrawPlayerName();
         int drawCount = playerDraw.getDrawCount();
 
@@ -159,7 +157,34 @@ public class GameService {
 
     }
 
-    public Map<Player, List<Integer>> getAllPlayersSpecialPoints() {
-        return allPlayersSpecialPoints;
+    public Map<Player, Integer> getAllPlayersSpecialPoints(ListType listType, int index) {
+
+        Map <Player, Integer> newMap = new LinkedHashMap<>();
+
+        for(var entry : allPlayersSpecialPoints.entrySet()){
+            newMap.put(entry.getKey(),entry.getValue().get(index));
+        }
+
+        switch (listType){
+            case TOTAL -> {
+                return newMap;
+            }
+            case WINNER -> {
+                int minValue = (Collections.min((newMap.values())));
+                for(Map.Entry<Player, Integer> entry : newMap.entrySet()){
+                    if(entry.getValue() == minValue) return Map.of(entry.getKey(),entry.getValue());
+                }
+            }
+            case LOSER -> {
+                int maxValue = (Collections.max(newMap.values()));
+                for(Map.Entry<Player, Integer> entry : newMap.entrySet()){
+                    if(entry.getValue() == maxValue) return Map.of(entry.getKey(),entry.getValue());
+                }
+            }
+            default -> {
+                return Map.of();
+            }
+        }
+        return Map.of();
     }
 }
