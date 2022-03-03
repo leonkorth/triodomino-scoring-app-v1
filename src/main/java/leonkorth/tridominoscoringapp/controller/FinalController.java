@@ -25,7 +25,8 @@ public class FinalController {
         model.addAttribute("playerNamesAndTotalPoints", gameService.getPlayerAndPoints(ListType.TOTAL));
         model.addAttribute("winner", gameService.getPlayerAndPoints(ListType.WINNER));
         model.addAttribute("loser", gameService.getPlayerAndPoints(ListType.LOSER));
-
+        model.addAttribute("playerWithMostDraws",gameService.getAllPlayersSpecialPoints(ListType.LOSER,0));
+        model.addAttribute("playerWithFewestDraws",gameService.getAllPlayersSpecialPoints(ListType.WINNER,0));
 
         return "final";
     }
