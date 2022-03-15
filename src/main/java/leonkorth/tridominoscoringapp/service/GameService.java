@@ -151,7 +151,7 @@ public class GameService {
 
         int index = allPlayers.indexOf(lastPlayer);
 
-        if(index < 0) return new Player("Test");
+        if(index < 0) return new Player(" ");
         else if(index + 1 == allPlayers.size()) return allPlayers.get(0);
         else return allPlayers.get(index + 1);
 

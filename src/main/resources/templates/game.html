@@ -20,7 +20,9 @@
             <table class="table">
                 <thead>
                 <tr class="headings">
-                    <th th:each="playerName: ${playerNames}" class="column-title" th:text="${playerName.getName}"></th>
+                    <th th:each="playerName: ${playerNames}" class="column-title" >
+                        <span class="playerName" th:text="${playerName.getName}"></span>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,7 +59,7 @@
                     </th>
                 </tr>
                 <tr class="headings">
-                    <th th:each="playerAndPoints: ${playerNamesAndTotalPoints}" class="column-title" th:text="'Punkte: ' + ${playerAndPoints.value}"></th>
+                    <th th:each="playerAndPoints: ${playerNamesAndTotalPoints}" class="column-title" th:text="'Gesamtpunkte: ' + ${playerAndPoints.value}"></th>
                 </tr>
                 <tr class="headings">
                     <th th:each="playerSpecialPoints: ${playerNamesAndSpecialPoints}" class="column-title" th:text="'Gezogen: ' + ${playerSpecialPoints.value + 'x'}"></th>
@@ -73,8 +75,10 @@
                 <p th:if="${playerCount > 6}">Zu viele Spieler!</p>
 
             </div>
-
-            <p th:case="${false}" th:text="${playerWhoseTurnItIs.getName()} + ' ist am Zug.'"></p>
+            <div th:case="${false}">
+                <span class="playerName" th:text="${playerWhoseTurnItIs.getName()}"></span>
+                <span>ist am Zug.</span>
+            </div>
         </div>
         <br>
         <div class="container">
@@ -85,10 +89,15 @@
     </div>
     <br>
     <div class="container">
-        <table class="dyn-table table" th:each="playerAndAllPoints: ${playerNamesAndAllPoints}">
+        <table class="dyn-table table scoreboard-table" th:each="playerAndAllPoints: ${playerNamesAndAllPoints}">
             <thead class="headings">
             <tr>
-                <th class="column-title" th:text="'Punktehistorie (' + ${playerAndAllPoints.key.getName()} + ')'"></th>
+                <th class="column-title">
+                    <span>     </span>
+                    <span class="playerName" th:text="${playerAndAllPoints.key.getName()}"></span>
+                    <span>     </span>
+
+                </th>
             </tr>
             </thead>
             <tbody>

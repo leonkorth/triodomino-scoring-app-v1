@@ -28,6 +28,10 @@ body{
 	overflow: hidden;
 }
 
+. table {
+	border-collapse: separate;
+	border-spacing: 0 15px;
+}
 .dyn-table{
 	float:left;
 }
@@ -38,6 +42,25 @@ body{
 
 .dyn-table td{
 	text-align: left;
+}
+
+
+.scoreboard-table{
+	border-top: 1px solid #999;
+	border-left: 1px solid #999;
+}
+
+.scoreboard-table th {
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+}
+
+.scoreboard-table td {
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	width: 150px;
+	text-align: center;
+	padding: 5px;
 }
 
 
@@ -80,6 +103,11 @@ body{
 .finalscreen-headings{
 	color: lightcoral;
 }
+
+.playerName{
+	color: brown;
+}
+
 #page-container {
 	position: relative;
 	min-height: 100vh;

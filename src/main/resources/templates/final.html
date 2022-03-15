@@ -41,7 +41,7 @@
 <div class="container">
     <h1 class="finalscreen-headings">Wer musste am meisten ziehen?</h1>
     <h3 th:each="fewestDraws: ${playerWithFewestDraws}" th:text="'Die wenigsten Steine musste ' + ${fewestDraws.key.getName()} + ' ziehen. Nochmal Glück gehabt! ' + 'Insgesamt nur ' + ${fewestDraws.value} + ' Steine.'"></h3>
-    <h3 th:each="mostDraws: ${playerWithMostDraws}" th:text="'Die meisten Steine musste ' + ${mostDraws.key.getName()} + ' ziehen. Mein Beleid! ' + 'Insgesamt ganze ' + ${mostDraws.value} + ' Steine.'"></h3>
+    <h3 th:each="mostDraws: ${playerWithMostDraws}" th:text="'Die meisten Steine musste ' + ${mostDraws.key.getName()} + ' ziehen. Mein Beileid! ' + 'Insgesamt ganze ' + ${mostDraws.value} + ' Steine.'"></h3>
 </div>
 
 
