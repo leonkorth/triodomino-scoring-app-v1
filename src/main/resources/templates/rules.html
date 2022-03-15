@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Triodomino</title>
+  <link th:href = "@{/css/style.css}" rel="stylesheet">
+
+</head>
+<body>
+<header id="main-header">
+  <div class="container">
+    <h1>Triodomino Scoring</h1>
+  </div>
+</header>
+
+<div class="container">
+
+  <h1>Regeln:</h1>
+  <h2>Vor dem Spiel:</h2>
+  <ul>
+    <li>Spieleranzahl: 2-6 Personen </li>
+    <li>2 Spieler -> 12 Steine je Spieler</li>
+    <li>3 bis 4 Spieler -> 9 Steine je Spieler</li>
+    <li>5 bis 6 Spieler -> 7 Steine je Spieler</li>
+  </ul>
+  <h2>Spielbeginn:</h2>
+  <ul>
+    <li>es legt der Spieler mit dem höchsten Dreier, es werden Zahlensumme + 20 Punkte angeschrieben</li>
+    <li>wenn kein Spieler einen Dreier hat, legt der Spieler mit der höchsten Zahlensumme</li>
+    <li>allerdings werden dann nur noch 10 Punkte angeschrieben</li>
+  </ul>
+  <h2>Regeln beim Steine ziehen:</h2>
+  <ul>
+    <li>es darf insgesamt 3x pro Zug gezogen werden</li>
+    <li>je gezogenen Stein gibt es 5 Minuspunkte</li>
+    <li>wenn der Spieler nach 3 gezogenen Steinen nicht anlegen kann, gibt es weitere 5 Minuspunkte</li>
+    <li>wenn keine Steine mehr zum Ziehen übrig sind, erhält der Spieler nur 10 Minuspunkte und der nächste Spieler ist am Zug</li>
+    <li>wenn keine Spieler in der gesamten Runde mehr legen können, gewinnt der Spieler die Runde, der zuletzt gelegt hat</li>
+  </ul>
+
+  <h2>Spielende:</h2>
+  <ul>
+    <li>wird eine Runde beendet, so erhält der Rundensieger weitere 20 Extrapunkte, sowie die restlichen Zahlensummen aller anderen Spieler zusammen</li>
+    <li>Gesamtsieger eines Spiels, ist der Spieler der am Ende einer Runde über 400 Punkte hat und auch sonst die meisten Punkte aller anderen Spieler hat</li>
+  </ul>
+
+
+</div>
+
+
+<footer id="main-footer">
+  <p>Copyright &copy; 2022 Leon Korth</p>
+</footer>
+</body>
+</html>
