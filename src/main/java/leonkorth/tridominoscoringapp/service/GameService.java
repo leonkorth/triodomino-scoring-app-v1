@@ -54,8 +54,8 @@ public class GameService {
     public GameService addPoints(PlayerMove playerMove){
 
 
-        String name = playerMove.getName();
-        int points = playerMove.getPoints();
+        String name = playerMove.getPlayerName();
+        int points = playerMove.getNumber();
 
         Player player = getAllPlayers().stream().filter(p -> p.getName().equals(name)).findAny().orElse(null);
 
@@ -75,8 +75,8 @@ public class GameService {
 
     public GameService increasePlayerDrawCount(PlayerDraw playerDraw){
 
-        String name = playerDraw.getDrawPlayerName();
-        int drawCount = playerDraw.getDrawCount();
+        String name = playerDraw.getPlayerName();
+        int drawCount = playerDraw.getNumber();
 
         Player player = getAllPlayers().stream().filter(p -> p.getName().equals(name)).findAny().orElse(null);
 

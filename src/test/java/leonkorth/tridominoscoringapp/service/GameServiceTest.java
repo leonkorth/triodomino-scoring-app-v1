@@ -25,15 +25,15 @@ public class GameServiceTest {
         PlayerMove playerMoveL1 = new PlayerMove();
         PlayerMove playerMoveL2 = new PlayerMove();
 
-        playerMoveL1.setName("Leon").setPoints(100);
-        playerMoveL2.setName("Leon").setPoints(200);
+        playerMoveL1.setPlayerName("Leon").setNumber(100);
+        playerMoveL2.setPlayerName("Leon").setNumber(200);
 
 
         PlayerMove playerMoveP1 = new PlayerMove();
         PlayerMove playerMoveP2 = new PlayerMove();
 
-        playerMoveP1.setName("Peonie").setPoints(111);
-        playerMoveP2.setName("Peonie").setPoints(111);
+        playerMoveP1.setPlayerName("Peonie").setNumber(111);
+        playerMoveP2.setPlayerName("Peonie").setNumber(111);
 
 
         gameService.startGame(List.of(p1,p2));
@@ -61,8 +61,8 @@ public class GameServiceTest {
         PlayerMove playerMoveL1 = new PlayerMove();
         PlayerMove playerMoveL2 = new PlayerMove();
 
-        playerMoveL1.setName("Leon").setPoints(100);
-        playerMoveL2.setName("Leon").setPoints(-50);
+        playerMoveL1.setPlayerName("Leon").setNumber(100);
+        playerMoveL2.setPlayerName("Leon").setNumber(-50);
 
         gameService.startGame(List.of(p1));
 
@@ -87,15 +87,15 @@ public class GameServiceTest {
         PlayerMove playerMoveL1 = new PlayerMove();
         PlayerMove playerMoveL2 = new PlayerMove();
 
-        playerMoveL1.setName("Leon").setPoints(100);
-        playerMoveL2.setName("Leon").setPoints(200);
+        playerMoveL1.setPlayerName("Leon").setNumber(100);
+        playerMoveL2.setPlayerName("Leon").setNumber(200);
 
 
         PlayerMove playerMoveP1 = new PlayerMove();
         PlayerMove playerMoveP2 = new PlayerMove();
 
-        playerMoveP1.setName("Peonie").setPoints(111);
-        playerMoveP2.setName("Peonie").setPoints(111);
+        playerMoveP1.setPlayerName("Peonie").setNumber(111);
+        playerMoveP2.setPlayerName("Peonie").setNumber(111);
 
 
         gameService.startGame(List.of(p1,p2));
@@ -128,15 +128,15 @@ public class GameServiceTest {
         PlayerMove playerMoveL1 = new PlayerMove();
         PlayerMove playerMoveL2 = new PlayerMove();
 
-        playerMoveL1.setName("Leon").setPoints(100);
-        playerMoveL2.setName("Leon").setPoints(200);
+        playerMoveL1.setPlayerName("Leon").setNumber(100);
+        playerMoveL2.setPlayerName("Leon").setNumber(200);
 
 
         PlayerMove playerMoveP1 = new PlayerMove();
         PlayerMove playerMoveP2 = new PlayerMove();
 
-        playerMoveP1.setName("Peonie").setPoints(111);
-        playerMoveP2.setName("Peonie").setPoints(111);
+        playerMoveP1.setPlayerName("Peonie").setNumber(111);
+        playerMoveP2.setPlayerName("Peonie").setNumber(111);
 
 
         gameService.startGame(List.of(p1,p2));
@@ -169,13 +169,13 @@ public class GameServiceTest {
         PlayerMove playerMoveL1 = new PlayerMove();
         PlayerMove playerMoveL2 = new PlayerMove();
 
-        playerMoveL1.setName("Leon").setPoints(100);
-        playerMoveL2.setName("Leon").setPoints(200);
+        playerMoveL1.setPlayerName("Leon").setNumber(100);
+        playerMoveL2.setPlayerName("Leon").setNumber(200);
 
 
         PlayerMove playerMoveP1 = new PlayerMove();
 
-        playerMoveP1.setName("Peonie").setPoints(111);
+        playerMoveP1.setPlayerName("Peonie").setNumber(111);
 
         gameService.startGame(List.of(p1,p2));
 
@@ -200,15 +200,15 @@ public class GameServiceTest {
         PlayerMove playerMoveL1 = new PlayerMove();
         PlayerMove playerMoveL2 = new PlayerMove();
 
-        playerMoveL1.setName("Leon").setPoints(100);
-        playerMoveL2.setName("Leon").setPoints(200);
+        playerMoveL1.setPlayerName("Leon").setNumber(100);
+        playerMoveL2.setPlayerName("Leon").setNumber(200);
 
 
         PlayerMove playerMoveP1 = new PlayerMove();
         PlayerMove playerMoveP2 = new PlayerMove();
 
-        playerMoveP1.setName("Peonie").setPoints(111);
-        playerMoveP2.setName("Peonie").setPoints(111);
+        playerMoveP1.setPlayerName("Peonie").setNumber(111);
+        playerMoveP2.setPlayerName("Peonie").setNumber(111);
 
         gameService.startGame(List.of(p1,p2));
 
@@ -234,10 +234,10 @@ public class GameServiceTest {
         PlayerMove pm4 = new PlayerMove();
 
 
-        pm1.setPoints(22).setName("Leon");
-        pm2.setPoints(11).setName("Leon");
-        pm3.setPoints(21).setName("Leon");
-        pm4.setPoints(33).setName("Leon");
+        pm1.setNumber(22).setPlayerName("Leon");
+        pm2.setNumber(11).setPlayerName("Leon");
+        pm3.setNumber(21).setPlayerName("Leon");
+        pm4.setNumber(33).setPlayerName("Leon");
 
         gameService.startGame(List.of(p1)).addPoints(pm1).addPoints(pm2).addPoints(pm3).addPoints(pm4);
 
@@ -261,10 +261,10 @@ public class GameServiceTest {
         PlayerMove pm4 = new PlayerMove();
 
 
-        pm1.setPoints(22).setName("Leon");
-        pm2.setPoints(11).setName("Leon");
-        pm3.setPoints(21).setName("Leon");
-        pm4.setPoints(33).setName("Leon");
+        pm1.setNumber(22).setPlayerName("Leon");
+        pm2.setNumber(11).setPlayerName("Leon");
+        pm3.setNumber(21).setPlayerName("Leon");
+        pm4.setNumber(33).setPlayerName("Leon");
 
         gameService.startGame(List.of(p1)).addPoints(pm1).addPoints(pm2).addPoints(pm3).addPoints(pm4);
 
@@ -288,8 +288,8 @@ public class GameServiceTest {
 
         PlayerDraw pd1 = new PlayerDraw();
         PlayerDraw pd2 = new PlayerDraw();
-        pd1.setDrawPlayerName("Max").setPoints(1);
-        pd2.setDrawPlayerName("Max").setPoints(1);
+        pd1.setPlayerName("Max");
+        pd2.setPlayerName("Max");
 
 
         gameService.startGame(List.of(p1,p2)).increasePlayerDrawCount(pd1).increasePlayerDrawCount(pd2);
@@ -312,8 +312,8 @@ public class GameServiceTest {
 
         PlayerDraw pd1 = new PlayerDraw();
         PlayerDraw pd2 = new PlayerDraw();
-        pd1.setDrawPlayerName("Max").setPoints(1);
-        pd2.setDrawPlayerName("Max").setPoints(1);
+        pd1.setPlayerName("Max");
+        pd2.setPlayerName("Max");
 
 
         gameService.startGame(List.of(p1,p2)).increasePlayerDrawCount(pd1).increasePlayerDrawCount(pd2);
@@ -335,8 +335,8 @@ public class GameServiceTest {
 
         PlayerDraw pd1 = new PlayerDraw();
         PlayerDraw pd2 = new PlayerDraw();
-        pd1.setDrawPlayerName("Max").setPoints(1);
-        pd2.setDrawPlayerName("Max").setPoints(1);
+        pd1.setPlayerName("Max");
+        pd2.setPlayerName("Max");
 
 
         gameService.startGame(List.of(p1,p2)).increasePlayerDrawCount(pd1).increasePlayerDrawCount(pd2);

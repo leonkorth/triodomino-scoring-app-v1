@@ -1,6 +1,6 @@
 package leonkorth.tridominoscoringapp.model;
 
-public class PlayerMove {
+public class PlayerMove implements PlayerAction{
 
     private int points;
     private String name;
@@ -8,20 +8,24 @@ public class PlayerMove {
     public PlayerMove(){};
 
 
-    public int getPoints() {
-        return points;
-    }
-
-    public PlayerMove setPoints(int points) {
-        this.points = points;
-        return this;
-    }
-
-    public String getName() {
+    @Override
+    public String getPlayerName() {
         return name;
     }
 
-    public PlayerMove setName(String name) {
+    @Override
+    public int getNumber() {
+        return points;
+    }
+
+    @Override
+    public PlayerAction setNumber(int number) {
+        points = number;
+        return this;
+    }
+
+    @Override
+    public PlayerAction setPlayerName(String name) {
         this.name = name;
         return this;
     }

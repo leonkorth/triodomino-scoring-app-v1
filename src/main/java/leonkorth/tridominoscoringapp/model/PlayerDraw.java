@@ -1,28 +1,32 @@
 package leonkorth.tridominoscoringapp.model;
 
-public class PlayerDraw {
+public class PlayerDraw implements PlayerAction {
+
 
     private int drawCount = 1;
     private String drawPlayerName;
 
     public PlayerDraw(){}
 
-
-    public int getDrawCount() {
-        return drawCount;
-    }
-
-    public PlayerDraw setPoints(int points) {
-        this.drawCount = points;
-        return this;
-    }
-
-    public String getDrawPlayerName() {
+    @Override
+    public String getPlayerName() {
         return drawPlayerName;
     }
 
-    public PlayerDraw setDrawPlayerName(String drawPlayerName) {
-        this.drawPlayerName = drawPlayerName;
+    @Override
+    public int getNumber() {
+        return drawCount;
+    }
+
+    @Override
+    public PlayerAction setNumber(int number) {
+        drawCount = number;
+        return this;
+    }
+
+    @Override
+    public PlayerAction setPlayerName(String name) {
+        drawPlayerName = name;
         return this;
     }
 
