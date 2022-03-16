@@ -3,6 +3,7 @@ package leonkorth.tridominoscoringapp.controller;
 import leonkorth.tridominoscoringapp.model.Player;
 import leonkorth.tridominoscoringapp.model.PlayerDraw;
 import leonkorth.tridominoscoringapp.model.PlayerMove;
+import leonkorth.tridominoscoringapp.service.GameActionReversingService;
 import leonkorth.tridominoscoringapp.service.GameService;
 import leonkorth.tridominoscoringapp.service.ListType;
 import leonkorth.tridominoscoringapp.service.PlayerService;
@@ -17,14 +18,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class GameController {
 
     @Autowired
-    PlayerService playerService;
+    private PlayerService playerService;
 
     @Autowired
-    GameService gameService;
+    private GameService gameService;
+
+    @Autowired
+    private GameActionReversingService gameActionReversingService;
 
     @GetMapping("/game")
     public String startGame(Model model){
-
 
         gameService.startGame(playerService.getAllPlayers());
 
@@ -45,7 +48,6 @@ public class GameController {
     public String getPlayerPoints(@ModelAttribute("playerMove") PlayerMove playerMove, Model model){
 
 
-
         gameService.addPoints(playerMove);
 
         extractedModel(model);
@@ -64,10 +66,8 @@ public class GameController {
         model.addAttribute("playerNamesAndSpecialPoints", gameService.getAllPlayersSpecialPoints(ListType.TOTAL,0));
     }
 
-
     @PostMapping("/game/addDrawCount")
     public String getPlayerPoints(@ModelAttribute("playerDraw") PlayerDraw playerDraw, Model model){
-
 
 
         gameService.increasePlayerDrawCount(playerDraw);

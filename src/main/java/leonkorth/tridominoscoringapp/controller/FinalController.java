@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class FinalController {
 
     @Autowired
-    PlayerService playerService;
+    private PlayerService playerService;
 
     @Autowired
-    GameService gameService;
+    private GameService gameService;
 
 
     @GetMapping("/final")

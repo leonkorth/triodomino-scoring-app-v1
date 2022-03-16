@@ -1,8 +1,8 @@
 package leonkorth.tridominoscoringapp.service;
 
 import leonkorth.tridominoscoringapp.model.Player;
-import leonkorth.tridominoscoringapp.model.PlayerDraw;
-import leonkorth.tridominoscoringapp.model.PlayerMove;
+import leonkorth.tridominoscoringapp.model.PlayerAction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -12,6 +12,9 @@ import java.util.stream.Stream;
 
 @Service
 public class GameService {
+
+    @Autowired
+    GameActionReversingService gameActionReversingService = new GameActionReversingService();
 
     public enum SortType{
         REVERSED,
@@ -40,6 +43,7 @@ public class GameService {
 
 
     public GameService startGame(List<Player> players){
+
         allPlayers = List.copyOf(players);
 
         allPlayers.forEach(p -> allPlayersAllPoints.put(p, List.of()));
@@ -51,8 +55,9 @@ public class GameService {
         return this;
     }
 
-    public GameService addPoints(PlayerMove playerMove){
+    public GameService addPoints(PlayerAction playerMove){
 
+        gameActionReversingService.addAction(playerMove);
 
         String name = playerMove.getPlayerName();
         int points = playerMove.getNumber();
@@ -73,7 +78,9 @@ public class GameService {
         return this;
     };
 
-    public GameService increasePlayerDrawCount(PlayerDraw playerDraw){
+    public GameService increasePlayerDrawCount(PlayerAction playerDraw){
+
+        gameActionReversingService.addAction(playerDraw);
 
         String name = playerDraw.getPlayerName();
         int drawCount = playerDraw.getNumber();
@@ -186,5 +193,26 @@ public class GameService {
             }
         }
         return Map.of();
+    }
+
+
+    public void setLastPlayer(Player lastPlayer) {
+        this.lastPlayer = lastPlayer;
+    }
+
+    public void setAllPlayers(List<Player> allPlayers) {
+        this.allPlayers = allPlayers;
+    }
+
+    public void setAllPlayersAllPoints(Map<Player, List<Integer>> allPlayersAllPoints) {
+        this.allPlayersAllPoints = allPlayersAllPoints;
+    }
+
+    public void setAllPlayersTotalPoints(Map<Player, Integer> allPlayersTotalPoints) {
+        this.allPlayersTotalPoints = allPlayersTotalPoints;
+    }
+
+    public void setAllPlayersSpecialPoints(Map<Player, List<Integer>> allPlayersSpecialPoints) {
+        this.allPlayersSpecialPoints = allPlayersSpecialPoints;
     }
 }
