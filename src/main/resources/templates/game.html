@@ -34,7 +34,7 @@
                                     <input type="hidden" th:value="${playerName.getName}" id="name" name="name"/>
                                 </div>
                                 <div class="form-group">
-                                    <p>Punkte: <input type="number" th:field="*{points}"/></p>
+                                    <p>Punkte: <input type="number" onfocus="this.value=''" th:field="*{points}"/></p>
                                 </div>
                                 <div class="form-group">
                                     <input class="button" type="submit" value="hinzufügen">
