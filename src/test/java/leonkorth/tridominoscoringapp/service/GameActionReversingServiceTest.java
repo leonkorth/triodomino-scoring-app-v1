@@ -44,8 +44,6 @@ public class GameActionReversingServiceTest {
 
         GameService gameService = new GameService();
 
-        GameActionReversingService gameActionReversingService = new GameActionReversingService();
-
         Player p1 = new Player("Leon");
 
         PlayerAction pa1 = new PlayerMove().setPlayerName("Leon").setNumber(10);
@@ -54,10 +52,10 @@ public class GameActionReversingServiceTest {
 
 
         gameService.startGame(List.of(p1)).addPoints(pa1).increasePlayerDrawCount(pa2).addPoints(pa3);
-        gameActionReversingService.reverseLastAction();
+        gameService.gameActionReversingService.reverseLastAction();
 
         List<PlayerAction> expectedActions = List.of(pa1, pa2);
-        List<PlayerAction> actualActions = gameActionReversingService.getAllActions();
+        List<PlayerAction> actualActions = gameService.gameActionReversingService.getAllActions();
 
         Map<Player, List<Integer>> expectedAllPlayersAllPoints = Map.of(p1, List.of(10));
         Map<Player, List<Integer>> actualAllPlayersAllPoints = gameService.getAllPlayersAllPoints(GameService.SortType.NORMAL);

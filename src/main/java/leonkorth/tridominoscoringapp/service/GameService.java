@@ -65,7 +65,6 @@ public class GameService {
         Player player = getAllPlayers().stream().filter(p -> p.getName().equals(name)).findAny().orElse(null);
 
         lastPlayer = player;
-
         int actualPoints = allPlayersTotalPoints.get(player);
 
         allPlayersTotalPoints.put(player,actualPoints + points);

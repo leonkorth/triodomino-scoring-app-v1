@@ -47,7 +47,6 @@ public class GameController {
     @PostMapping("/game/addPoints")
     public String getPlayerPoints(@ModelAttribute("playerMove") PlayerMove playerMove, Model model){
 
-
         gameService.addPoints(playerMove);
 
         extractedModel(model);
@@ -68,6 +67,7 @@ public class GameController {
 
     @PostMapping("/game/addDrawCount")
     public String getPlayerPoints(@ModelAttribute("playerDraw") PlayerDraw playerDraw, Model model){
+
 
 
         gameService.increasePlayerDrawCount(playerDraw);
