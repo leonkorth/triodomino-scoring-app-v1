@@ -39,8 +39,8 @@ public class GameActionReversingServiceTest {
     }
 
     @Test
-    @DisplayName("reverses the actions correctly")
-    void reverseActions(){
+    @DisplayName("reverses the points correctly")
+    void reversePoints(){
 
         GameService gameService = new GameService();
 
@@ -66,5 +66,40 @@ public class GameActionReversingServiceTest {
         assertEquals(expectedActions,actualActions);
         assertEquals(expectedAllPlayersAllPoints,actualAllPlayersAllPoints);
         assertEquals(expectedTotalPoints,actualTotalPoints);
+    }
+
+    @Test
+    @DisplayName("reverses the draws correctly")
+    void reverseDraws(){
+
+        GameService gameService = new GameService();
+
+        Player p1 = new Player("Leon");
+
+        PlayerAction pa1 = new PlayerMove().setPlayerName("Leon").setNumber(10);
+        PlayerAction pa2 = new PlayerMove().setPlayerName("Leon").setNumber(11);
+        PlayerAction pa3 = new PlayerDraw().setPlayerName("Leon");
+
+
+
+        gameService.startGame(List.of(p1)).addPoints(pa1).addPoints(pa2).increasePlayerDrawCount(pa3);
+        gameService.gameActionReversingService.reverseLastAction();
+
+        List<PlayerAction> expectedActions = List.of(pa1, pa2);
+        List<PlayerAction> actualActions = gameService.gameActionReversingService.getAllActions();
+
+        Map<Player, List<Integer>> expectedAllPlayersAllPoints = Map.of(p1, List.of(10,11));
+        Map<Player, List<Integer>> actualAllPlayersAllPoints = gameService.getAllPlayersAllPoints(GameService.SortType.NORMAL);
+
+        Map<Player, Integer> expectedTotalPoints = Map.of(p1, 21);
+        Map<Player, Integer> actualTotalPoints = gameService.getPlayerAndPoints(ListType.TOTAL);
+
+        Map<Player, Integer> expectedSpecialPoints = Map.of(p1, 0);
+        Map<Player, Integer> actualSpecialPoints = gameService.getAllPlayersSpecialPoints(ListType.TOTAL,0);
+
+        assertEquals(expectedActions,actualActions);
+        assertEquals(expectedAllPlayersAllPoints,actualAllPlayersAllPoints);
+        assertEquals(expectedTotalPoints,actualTotalPoints);
+        assertEquals(expectedSpecialPoints,actualSpecialPoints);
     }
 }

@@ -2,7 +2,6 @@ package leonkorth.tridominoscoringapp.service;
 
 import leonkorth.tridominoscoringapp.model.Player;
 import leonkorth.tridominoscoringapp.model.PlayerAction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -13,12 +12,14 @@ import java.util.stream.Stream;
 @Service
 public class GameService {
 
-    @Autowired
-    GameActionReversingService gameActionReversingService = new GameActionReversingService();
+    GameActionReversingService gameActionReversingService = new GameActionReversingService(this);
 
     public enum SortType{
         REVERSED,
         NORMAL
+    }
+
+    public GameService() {
     }
 
     private static <T> Collector<T, ?, Stream<T> > reverseStream()
@@ -193,6 +194,11 @@ public class GameService {
         }
         return Map.of();
     }
+
+    public Map<Player, List<Integer>> getAllPlayersSpecialPoints() {
+        return allPlayersSpecialPoints;
+    }
+
 
 
     public void setLastPlayer(Player lastPlayer) {
