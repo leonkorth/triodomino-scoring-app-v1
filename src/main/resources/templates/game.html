@@ -82,15 +82,20 @@
         </div>
         <br>
         <div class="container">
-            <form th:action="@{/rules}" method="get">
+            <form class="floated" th:action="@{/game/undo}" method="get">
+                <input class="button" type="submit" value="Rückgängig">
+            </form>
+            <form class="floated" th:action="@{/rules}" method="get">
                 <input class="button" type="submit" value="Zu den Regeln">
             </form>
+            <form class="floated" th:action="@{/final}" method="get">
+                <input class="button" type="submit" value="Spiel beenden">
+            </form>
+
         </div>
         <br>
         <div class="container">
-            <form th:action="@{/final}" method="get">
-                <input class="button" type="submit" value="Spiel beenden">
-            </form>
+
         </div>
     </div>
     <br>

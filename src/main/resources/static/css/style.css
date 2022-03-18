@@ -108,6 +108,11 @@ body{
 	color: brown;
 }
 
+.floated{
+	float: left;
+	margin-right: 5px;
+}
+
 #page-container {
 	position: relative;
 	min-height: 100vh;
