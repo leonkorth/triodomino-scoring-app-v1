@@ -50,10 +50,10 @@ public class GameActionReversingService {
             if(totalPoints.isEmpty()) return this;
 
             totalPoints.put(player, totalPoints.get(player) - number);
-            gameService.setAllPlayersTotalPoints(Map.copyOf(totalPoints));
+            gameService.setAllPlayersTotalPoints(totalPoints);
 
 
-            Map<Player, List<Integer>> allPointsAllPlayers = new  LinkedHashMap<>(Map.copyOf(gameService.getAllPlayersAllPoints(GameService.SortType.NORMAL)));
+            Map<Player, List<Integer>> allPointsAllPlayers = new  LinkedHashMap<>(gameService.getAllPlayersAllPoints(GameService.SortType.NORMAL));
             List<Integer> allPointsForLastPlayer = gameService.getAllPlayersAllPoints(GameService.SortType.NORMAL).get(player);
 
             if(allPointsForLastPlayer.isEmpty()) return this;
@@ -67,7 +67,7 @@ public class GameActionReversingService {
         }
         else if(lastAction.getClass().equals(PlayerDraw.class)){
 
-                Map<Player, List<Integer>> allPlayersSpecialPoints =  new LinkedHashMap<>(Map.copyOf(gameService.getAllPlayersSpecialPoints()));
+                Map<Player, List<Integer>> allPlayersSpecialPoints =  new LinkedHashMap<>(gameService.getAllPlayersSpecialPoints());
                 List<Integer> lastPlayerSpecialPoints = allPlayersSpecialPoints.get(player);
                 lastPlayerSpecialPoints.set(0, lastPlayerSpecialPoints.get(0) - number);
 

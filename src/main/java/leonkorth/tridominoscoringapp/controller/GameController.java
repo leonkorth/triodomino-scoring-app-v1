@@ -69,8 +69,17 @@ public class GameController {
     public String getPlayerPoints(@ModelAttribute("playerDraw") PlayerDraw playerDraw, Model model){
 
 
-
         gameService.increasePlayerDrawCount(playerDraw);
+
+        extractedModel(model);
+
+        return "game";
+    }
+
+    @GetMapping("/game/undo")
+    public String undoLastAction(Model model){
+
+        gameService.gameActionReversingService.reverseLastAction();
 
         extractedModel(model);
 

@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 @Service
 public class GameService {
 
-    GameActionReversingService gameActionReversingService = new GameActionReversingService(this);
+    public GameActionReversingService gameActionReversingService = new GameActionReversingService(this);
 
     public enum SortType{
         REVERSED,
@@ -70,7 +70,7 @@ public class GameService {
 
         allPlayersTotalPoints.put(player,actualPoints + points);
 
-        List<Integer> newList = new ArrayList<>(List.copyOf(allPlayersAllPoints.get(player)));
+        List<Integer> newList = new ArrayList<>((allPlayersAllPoints.get(player)));
         newList.add(points);
 
         allPlayersAllPoints.put(player,newList);
@@ -87,7 +87,7 @@ public class GameService {
 
         Player player = getAllPlayers().stream().filter(p -> p.getName().equals(name)).findAny().orElse(null);
 
-        List<Integer> oldSpecialPoints = new ArrayList<>(List.copyOf(allPlayersSpecialPoints.get(player)));
+        List<Integer> oldSpecialPoints = new ArrayList<>(allPlayersSpecialPoints.get(player));
 
         oldSpecialPoints.set(0, oldSpecialPoints.get(0) + drawCount);
 
@@ -154,7 +154,7 @@ public class GameService {
 
     public Player getPlayerWhoseTurnItIs(){
 
-        List<Player> allPlayers = List.copyOf(getAllPlayers());
+        List<Player> allPlayers = new ArrayList<>(getAllPlayers());
 
         int index = allPlayers.indexOf(lastPlayer);
 
@@ -210,11 +210,11 @@ public class GameService {
     }
 
     public void setAllPlayersAllPoints(Map<Player, List<Integer>> allPlayersAllPoints) {
-        this.allPlayersAllPoints = allPlayersAllPoints;
+        this.allPlayersAllPoints = new LinkedHashMap<>(allPlayersAllPoints);
     }
 
     public void setAllPlayersTotalPoints(Map<Player, Integer> allPlayersTotalPoints) {
-        this.allPlayersTotalPoints = allPlayersTotalPoints;
+        this.allPlayersTotalPoints = new LinkedHashMap<>(allPlayersTotalPoints);
     }
 
     public void setAllPlayersSpecialPoints(Map<Player, List<Integer>> allPlayersSpecialPoints) {
