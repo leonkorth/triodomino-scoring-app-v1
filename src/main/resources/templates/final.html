@@ -44,7 +44,16 @@
     <h3 th:each="mostDraws: ${playerWithMostDraws}" th:text="'Die meisten Steine musste ' + ${mostDraws.key.getName()} + ' ziehen. Mein Beileid! ' + 'Insgesamt ganze ' + ${mostDraws.value} + ' Steine.'"></h3>
 </div>
 
+<div class="container">
+    <form class="floated" th:action="@{/game}" method="get">
+        <input class="button" type="submit" value="Neues Spiel mit den gleichen Spielern">
+    </form>
+    <form class="floated" th:action="@{/}" method="get">
+        <input class="button" type="submit" value="Neues Spiel mit neuen Spielern">
+    </form>
 
+
+</div>
 
 
 
