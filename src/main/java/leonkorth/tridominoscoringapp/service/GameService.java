@@ -201,23 +201,28 @@ public class GameService {
 
 
 
-    public void setLastPlayer(Player lastPlayer) {
+    public GameService setLastPlayer(Player lastPlayer) {
         this.lastPlayer = lastPlayer;
+        return this;
     }
 
-    public void setAllPlayers(List<Player> allPlayers) {
+    public GameService setAllPlayers(List<Player> allPlayers) {
         this.allPlayers = allPlayers;
+        return this;
     }
 
-    public void setAllPlayersAllPoints(Map<Player, List<Integer>> allPlayersAllPoints) {
+    public GameService setAllPlayersAllPoints(Map<Player, List<Integer>> allPlayersAllPoints) {
         this.allPlayersAllPoints = new LinkedHashMap<>(allPlayersAllPoints);
+        return this;
     }
 
-    public void setAllPlayersTotalPoints(Map<Player, Integer> allPlayersTotalPoints) {
+    public GameService setAllPlayersTotalPoints(Map<Player, Integer> allPlayersTotalPoints) {
         this.allPlayersTotalPoints = new LinkedHashMap<>(allPlayersTotalPoints);
+        return this;
     }
 
-    public void setAllPlayersSpecialPoints(Map<Player, List<Integer>> allPlayersSpecialPoints) {
+    public GameService setAllPlayersSpecialPoints(Map<Player, List<Integer>> allPlayersSpecialPoints) {
         this.allPlayersSpecialPoints = allPlayersSpecialPoints;
+        return this;
     }
 }

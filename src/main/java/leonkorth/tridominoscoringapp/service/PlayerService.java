@@ -26,4 +26,8 @@ public class PlayerService {
     }
 
 
+    public List<Player> removeAllPlayers(){
+        allPlayers.clear();
+        return allPlayers;
+    }
 }

@@ -7,10 +7,7 @@ import leonkorth.tridominoscoringapp.model.PlayerDraw;
 import leonkorth.tridominoscoringapp.model.PlayerMove;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class GameActionReversingService {
@@ -76,6 +73,31 @@ public class GameActionReversingService {
         }
         return this;
     }
+
+    public GameActionReversingService reverseAllActionsAllPlayers(){
+
+        allActions.clear();
+
+        List<Player> allPlayers = new ArrayList<>(gameService.getAllPlayers());
+        allPlayers.clear();
+
+        Map<Player, List<Integer>> allPlayersAllPoints = new LinkedHashMap<>(gameService.getAllPlayersAllPoints(GameService.SortType.NORMAL));
+        allPlayersAllPoints.clear();
+
+        Map<Player, Integer> allPlayersTotalPoints = new LinkedHashMap<>(gameService.getPlayerAndPoints(ListType.TOTAL));
+        allPlayersTotalPoints.clear();
+
+        Map<Player, List<Integer>> allPlayersSpecialPoints = new LinkedHashMap<>(gameService.getAllPlayersSpecialPoints());
+        allPlayersSpecialPoints.clear();
+
+        gameService
+                .setLastPlayer(null)
+                .setAllPlayers(allPlayers)
+                .setAllPlayersAllPoints(allPlayersAllPoints)
+                .setAllPlayersTotalPoints(allPlayersTotalPoints)
+                .setAllPlayersSpecialPoints(allPlayersSpecialPoints);
+        return this;
+    };
 
     public List<PlayerAction> getAllActions() {
         return this.allActions;

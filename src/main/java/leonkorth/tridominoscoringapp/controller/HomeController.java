@@ -22,6 +22,9 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model){
 
+        playerService.removeAllPlayers();
+        gameService.gameActionReversingService.reverseAllActionsAllPlayers();
+
         return "home";
     }
 
