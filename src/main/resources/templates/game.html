@@ -29,7 +29,7 @@
                 <tr>
                     <th th:each="playerName: ${playerNames}">
                         <div class="container">
-                            <form action="#" th:action="@{/game/addPoints}" th:object="${playerMove}" method="post">
+                            <form class="form" action="#" th:action="@{/game/addPoints}" th:object="${playerMove}" method="post">
                                 <div class="form-group">
                                     <input type="hidden" th:value="${playerName.getName}" name="playerName"/>
                                 </div>

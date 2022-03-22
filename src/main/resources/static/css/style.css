@@ -10,6 +10,10 @@ body{
 	margin: 0;
 }
 
+.form input:focus{
+	background: khaki;
+}
+
 .button{
 	background-color: #333;
 	color: #fff;
